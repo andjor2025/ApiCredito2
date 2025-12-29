@@ -1,0 +1,25 @@
+﻿namespace GestionIntApi.DTO.Admin
+{
+    public class ProductoBodegaDTO
+    {
+
+
+        public int Id { get; set; }
+        public string TipoProducto { get; set; }
+
+        public string Codigo { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string? IMEI { get; set; }
+        public string? Serie { get; set; }
+        public string? Color { get; set; }
+        public string? Tamano { get; set; }
+        public string Estado { get; set; }
+        public decimal PrecioCompra { get; set; }
+        public decimal? PrecioVenta { get; set; }
+        public DateTime FechaIngreso { get; set; }
+        public int DiasEnBodega { get; set; }
+
+
+    }
+}
