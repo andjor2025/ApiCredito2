@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GestionIntApi.DTO;
+using GestionIntApi.DTO.Admin;
 using GestionIntApi.Models;
 using GestionIntApi.Repositorios.Contrato;
 using GestionIntApi.Repositorios.Interfaces;
@@ -48,7 +49,7 @@ namespace GestionIntApi.Servicios.Implementacion
             }
         }
 
-        public async Task<List<UbicacionDTO>> ObtenerPorUsuario(int usuarioId)
+        public async Task<List<UbicacionMostrarDTO>> ObtenerPorUsuario(int usuarioId)
         {
             try
             {
@@ -56,7 +57,7 @@ namespace GestionIntApi.Servicios.Implementacion
                 var lista = await query.OrderByDescending(n => n.Fecha).ToListAsync();
 
                 // Mapear a DTO
-                return _mapper.Map<List<UbicacionDTO>>(lista);
+                return _mapper.Map<List<UbicacionMostrarDTO>>(lista);
             }
             catch (Exception ex)
             {

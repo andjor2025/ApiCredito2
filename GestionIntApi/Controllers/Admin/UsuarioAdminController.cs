@@ -34,7 +34,7 @@ namespace GestionIntApi.Controllers.Admin
 
         [HttpPost]
         [Route("IniciarSesion")]
-        public async Task<IActionResult> IniciarSesion([FromBody] LoginDTO login)
+        public async Task<IActionResult> IniciarSesion([FromBody] LoginAdminDto login)
         {
             var rsp = new Response<SesionDTOAdmin>();
             try
@@ -53,12 +53,12 @@ namespace GestionIntApi.Controllers.Admin
 
         [HttpPost]
         [Route("Guardar")]
-        public async Task<IActionResult> Guardar1([FromBody] UsuarioAdminDTO usuarioAdmin)
+        public async Task<IActionResult> GuardarAdmin([FromBody] UsuarioAdminDTO usuarioAdmin)
         {
             var rsp = new Response<UsuarioAdminDTO>();
             try
             {
-                var existe = await _UsuarioServicios.ExisteCorreo(usuarioAdmin.Correo);
+                var existe = await _UsuarioAdminServicios.ExisteCorreoAdmin(usuarioAdmin.Correo);
                 if (existe)
                 {
                     rsp.status = false;
@@ -99,10 +99,119 @@ namespace GestionIntApi.Controllers.Admin
         }
 
 
+        [HttpPost]
+        [Route("GuardarASinVer")]
+        public async Task<IActionResult> GuardarAdminSinVerif([FromBody] UsuarioAdminDTO usuarioAdmin)
+        {
+            var rsp = new Response<UsuarioAdminDTO>();
+            try
+            {
+                // 1. Verificar si el correo ya existe
+                var existe = await _UsuarioAdminServicios.ExisteCorreoAdmin(usuarioAdmin.Correo);
+                if (existe)
+                {
+                    rsp.status = false;
+                    rsp.msg = "El correo ya está registrado.";
+                    return BadRequest(rsp);
+                }
+
+                // 2. Registrar directamente en la base de datos
+                // Usamos el servicio de creación de usuario directamente
+                var usuarioCreado = await _UsuarioAdminServicios.crearUsuario(usuarioAdmin);
+
+                if (usuarioCreado != null)
+                {
+                    rsp.status = true;
+                    rsp.msg = "Usuario registrado exitosamente.";
+                    rsp.value = usuarioCreado;
+                }
+                else
+                {
+                    rsp.status = false;
+                    rsp.msg = "No se pudo crear el usuario.";
+                    return BadRequest(rsp);
+                }
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+                return StatusCode(500, rsp);
+            }
+            return Ok(rsp);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UsuarioAdminDTO>> GetById(int id)
+        {
+            try
+            {
+                var odontologo = await _UsuarioAdminServicios.obtenerPorIdUsuario(id);
+                if (odontologo == null)
+                    return NotFound();
+                return Ok(odontologo);
+            }
+            catch
+            {
+                return StatusCode(500, "Error al obtener el Odontólogo por ID");
+            }
+        }
+
+        [HttpGet]
+        [Route("Lista")]
+        public async Task<IActionResult> Lista()
+        {
+            var rsp = new Response<List<UsuarioAdminDTO>>();
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _UsuarioAdminServicios.listaUsuarios();
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
 
 
+        [HttpDelete]
+        [Route("Eliminar/{id:int}")]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            var rsp = new Response<bool>();
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _UsuarioAdminServicios.eliminarUsuario(id);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
 
 
+        [HttpPut]
+        [Route("Editar")]
+        public async Task<IActionResult> Editar(UsuarioAdminDTO usuarioAdmin)
+        {
+            var rsp = new Response<bool>();
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _UsuarioAdminServicios.editarUsuario(usuarioAdmin);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
 
 
 

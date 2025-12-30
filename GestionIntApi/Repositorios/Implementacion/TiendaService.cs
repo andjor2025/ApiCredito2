@@ -107,14 +107,14 @@ namespace GestionIntApi.Repositorios.Implementacion
                 throw new Exception("No existe una tienda con esa cédula");
 
             // Validar que no esté asociada ya al cliente
-            var existeRelacion = await _tiendaAppRepository.Obtener(
+          /*  var existeRelacion = await _tiendaAppRepository.Obtener(
                 ta => ta.ClienteId == dto.ClienteId &&
                       ta.CedulaEncargado == dto.CedulaEncargado
             );
 
             if (existeRelacion != null)
                 throw new Exception("La tienda ya está asociada a este cliente");
-
+          */
             // 1. Creamos la entidad
             var tiendaApp = new TiendaApp
             {

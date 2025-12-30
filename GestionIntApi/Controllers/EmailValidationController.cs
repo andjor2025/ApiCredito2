@@ -1,7 +1,10 @@
 ﻿using GestionIntApi.DTO;
+using GestionIntApi.DTO.Admin;
 using GestionIntApi.Models;
+using GestionIntApi.Models.Admin;
 using GestionIntApi.Repositorios.Implementacion;
 using GestionIntApi.Repositorios.Interfaces;
+using GestionIntApi.Repositorios.Interfaces.Admin;
 using GestionIntApi.Utilidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc;
@@ -22,14 +25,18 @@ namespace GestionIntApi.Controllers
         private readonly IEmailService _emailService;
         private readonly ICodigoVerificacionService _codigoService;
         private readonly IUsuarioRepository _UsuarioServicios;
+        private readonly IUsuarioAdminRepository _UsuarioServiciosAdmin;
         private readonly IRegistroTemporalService _registroTemporal;
-        public EmailValidationController(SistemaGestionDBcontext context, IEmailService emailService, ICodigoVerificacionService codigoService, IUsuarioRepository usuarioServicios, IRegistroTemporalService iRegistroTemporalService)
+        private readonly IRegistroTemporalAdminService _registroTemporalAdmin;
+        public EmailValidationController(IUsuarioAdminRepository UsuarioServiciosAdmin,IRegistroTemporalAdminService registroTemporalAdmin,SistemaGestionDBcontext context, IEmailService emailService, ICodigoVerificacionService codigoService, IUsuarioRepository usuarioServicios, IRegistroTemporalService iRegistroTemporalService)
         { 
             _context = context;
             _emailService = emailService;
             _codigoService = codigoService;
             _UsuarioServicios = usuarioServicios;
             _registroTemporal = iRegistroTemporalService;
+            _registroTemporalAdmin = registroTemporalAdmin;
+            _UsuarioServiciosAdmin = UsuarioServiciosAdmin;
         }
 
         [HttpPost("EnviarCodigo")]
@@ -103,6 +110,9 @@ namespace GestionIntApi.Controllers
 
             return Ok(new { status = true, msg = "Código enviado" });
         }
+
+
+      
         [HttpPost("EnviarCodigoBD")]
         public async Task<IActionResult> EnviarCodigo2([FromBody] UsuarioDTO usuario)
         {
@@ -289,6 +299,89 @@ namespace GestionIntApi.Controllers
             }
         }
 
+        [HttpPost("EnviarCodigoAdmin")]
+        public async Task<IActionResult> EnviarCodigoAdmin([FromBody] UsuarioAdminDTO usuario)
+        {
+
+            // --- LOGS ---
+            Console.WriteLine("===== USUARIO RECIBIDO =====");
+            Console.WriteLine($"Nombre: {usuario.NombreApellidos}");
+            Console.WriteLine($"Correo: {usuario.Correo}");
+           
+
+            var correo = usuario.Correo;
+
+            var codigo = new Random().Next(100000, 999999).ToString();
+
+            // Guardar solo el código si quieres
+            _codigoService.GuardarCodigo(correo, codigo);
+
+            // Guardar TODO en registro temporal
+            _registroTemporalAdmin.GuardarRegistro(correo, new RegistroTemporalAdmin
+            {
+                UsuarioAdmin = usuario,
+                Codigo = codigo,
+                Expira = DateTime.Now.AddMinutes(5)
+            });
+
+            await _emailService.SendEmailAsync(
+                correo,
+                "Código de verificación",
+                $"<h3>Tu código es: <b>{codigo}</b></h3>"
+            );
+
+            return Ok(new { status = true, msg = "Código enviado" });
+        }
+
+
+        [HttpPost("ValidarCodigoAdmin")]
+        public async Task<IActionResult> ValidarCodigoAdmin([FromBody] VerificationCode req)
+        {
+
+            Console.WriteLine("=== 📥 PETICIÓN ValidarCodigo ===");
+            Console.WriteLine($"Correo recibido: {req.Correo}");
+            Console.WriteLine($"Código recibido: {req.Codigo}");
+
+            var rsp = new Response<UsuarioAdminDTO>();
+
+            var registro = _registroTemporalAdmin.ObtenerRegistro(req.Correo);
+
+            if (registro == null)
+            {
+                Console.WriteLine("❌ No existe registro temporal para este correo.");
+                rsp.status = false;
+                rsp.msg = "Código incorrecto o expirado.";
+                return BadRequest(rsp);
+            }
+
+            //   Console.WriteLine("Registro encontrado en memoria:");
+            //  Console.WriteLine($"Código guardado: {registro.Codigo}");
+
+            if (registro.Codigo != req.Codigo)
+            {
+                //    Console.WriteLine("❌ El código NO coincide con el guardado.");
+                rsp.status = false;
+                rsp.msg = "Código incorrecto o expirado.";
+                return BadRequest(rsp);
+            }
+
+            //Console.WriteLine("✅ Código correcto, procediendo a crear usuario...");
+
+            // Guardar usuario en la base de datos
+            var nuevoUsuario = await _UsuarioServiciosAdmin.crearUsuario(registro.UsuarioAdmin);
+
+            // Eliminar registro temporal
+            _registroTemporal.EliminarRegistro(req.Correo);
+            // Console.WriteLine("🗑 Registro temporal eliminado.");
+
+            rsp.status = true;
+            rsp.value = nuevoUsuario;
+            rsp.msg = "Usuario registrado correctamente.";
+
+            Console.WriteLine("=== ✔ RESPUESTA Correcta ===");
+
+            return Ok(rsp);
+        }
 
 
     }

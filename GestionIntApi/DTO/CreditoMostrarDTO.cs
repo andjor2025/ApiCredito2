@@ -6,6 +6,7 @@
         public decimal MontoTotal { get; set; }// Id del crédito        
         public decimal MontoPendiente { get; set; }
         public string FechaCreditoStr { get; set; }
+        public decimal Entrada { get; set; }
         public string ProximaCuotaStr { get; set; }
         public int PlazoCuotas { get; set; }
         public decimal ValorPorCuota { get; set; }

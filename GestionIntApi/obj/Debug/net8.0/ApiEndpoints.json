@@ -534,6 +534,22 @@
   },
   {
     "ContainingType": "GestionIntApi.Controllers.EmailValidationController",
+    "Method": "EnviarCodigoAdmin",
+    "RelativePath": "api/EmailValidation/EnviarCodigoAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "GestionIntApi.DTO.Admin.UsuarioAdminDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.EmailValidationController",
     "Method": "EnviarCodigo2",
     "RelativePath": "api/EmailValidation/EnviarCodigoBD",
     "HttpMethod": "POST",
@@ -566,6 +582,22 @@
   },
   {
     "ContainingType": "GestionIntApi.Controllers.EmailValidationController",
+    "Method": "ValidarCodigoAdmin",
+    "RelativePath": "api/EmailValidation/ValidarCodigoAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "GestionIntApi.Models.VerificationCode",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.EmailValidationController",
     "Method": "ValidarCodigo",
     "RelativePath": "api/EmailValidation/ValidarCodigoconBD",
     "HttpMethod": "POST",
@@ -576,6 +608,38 @@
         "Name": "req",
         "Type": "GestionIntApi.DTO.VerificationRequestDTO",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.MenuController",
+    "Method": "Lista",
+    "RelativePath": "api/Menu/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.MenuAdminController",
+    "Method": "Lista",
+    "RelativePath": "api/MenuAdmin/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -723,6 +787,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Rol",
+    "Method": "Lista",
+    "RelativePath": "api/Rol/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.RolAdminController",
+    "Method": "Lista",
+    "RelativePath": "api/RolAdmin/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -1067,8 +1151,82 @@
   },
   {
     "ContainingType": "GestionIntApi.Controllers.Admin.UsuarioAdminController",
-    "Method": "Guardar1",
+    "Method": "GetById",
+    "RelativePath": "api/UsuarioAdmin/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GestionIntApi.DTO.Admin.UsuarioAdminDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.UsuarioAdminController",
+    "Method": "Editar",
+    "RelativePath": "api/UsuarioAdmin/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioAdmin",
+        "Type": "GestionIntApi.DTO.Admin.UsuarioAdminDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.UsuarioAdminController",
+    "Method": "Eliminar",
+    "RelativePath": "api/UsuarioAdmin/Eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.UsuarioAdminController",
+    "Method": "GuardarAdmin",
     "RelativePath": "api/UsuarioAdmin/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioAdmin",
+        "Type": "GestionIntApi.DTO.Admin.UsuarioAdminDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.UsuarioAdminController",
+    "Method": "GuardarAdminSinVerif",
+    "RelativePath": "api/UsuarioAdmin/GuardarASinVer",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1091,10 +1249,20 @@
     "Parameters": [
       {
         "Name": "login",
-        "Type": "GestionIntApi.DTO.LoginDTO",
+        "Type": "GestionIntApi.DTO.Admin.LoginAdminDto",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.UsuarioAdminController",
+    "Method": "Lista",
+    "RelativePath": "api/UsuarioAdmin/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

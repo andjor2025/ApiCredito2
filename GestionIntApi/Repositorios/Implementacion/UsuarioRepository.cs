@@ -334,7 +334,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                             TiendaId = tiendaExistente.Id,
                             ClienteId = cliente.Id,
                             CedulaEncargado = t.CedulaEncargado,
-                            EstadoDeComision = "Pendiente",
+                            EstadoDeComision = t.EstadoDeComision,
                             FechaRegistro = DateTime.UtcNow
                         };
 
@@ -417,5 +417,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             return await _context.Usuarios
                                  .AnyAsync(u => u.Correo.ToLower() == correo.ToLower());
         }
+
+      
     }
 }

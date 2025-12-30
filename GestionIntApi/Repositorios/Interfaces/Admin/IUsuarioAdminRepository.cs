@@ -11,6 +11,7 @@ namespace GestionIntApi.Repositorios.Interfaces.Admin
         Task<UsuarioAdminDTO> crearUsuario(UsuarioAdminDTO modelo);
         Task<bool> editarUsuario(UsuarioAdminDTO modelo);
         Task<bool> eliminarUsuario(int id);
+        Task<bool> ExisteCorreoAdmin(string correo);
         Task<UsuarioAdminDTO> obtenerPorIdUsuario(int id);
     }
 }

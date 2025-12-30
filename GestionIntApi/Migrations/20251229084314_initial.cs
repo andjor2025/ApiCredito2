@@ -63,6 +63,21 @@ namespace GestionIntApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MenusAdmin",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre = table.Column<string>(type: "text", nullable: true),
+                    Icono = table.Column<string>(type: "text", nullable: true),
+                    Url = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenusAdmin", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Rol",
                 columns: table => new
                 {
@@ -74,6 +89,20 @@ namespace GestionIntApi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rol", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RolesAdmin",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Descripcion = table.Column<string>(type: "text", nullable: true),
+                    FechaRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RolesAdmin", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,6 +204,83 @@ namespace GestionIntApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MenuRolAdmin",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    MenuAdminId = table.Column<int>(type: "integer", nullable: true),
+                    RolAdminId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenuRolAdmin", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MenuRolAdmin_MenusAdmin_MenuAdminId",
+                        column: x => x.MenuAdminId,
+                        principalTable: "MenusAdmin",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MenuRolAdmin_RolesAdmin_RolAdminId",
+                        column: x => x.RolAdminId,
+                        principalTable: "RolesAdmin",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsuariosAdmin",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreApellidos = table.Column<string>(type: "text", nullable: true),
+                    Correo = table.Column<string>(type: "text", nullable: true),
+                    RolAdminId = table.Column<int>(type: "integer", nullable: true),
+                    Clave = table.Column<string>(type: "text", nullable: true),
+                    EsActivo = table.Column<bool>(type: "boolean", nullable: true),
+                    FechaRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsuariosAdmin", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsuariosAdmin_RolesAdmin_RolAdminId",
+                        column: x => x.RolAdminId,
+                        principalTable: "RolesAdmin",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Producto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    TipoProducto = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    IMEI = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    Serie = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    Marca = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Modelo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Color = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    Tamano = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Estado = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    TiendaActualId = table.Column<int>(type: "integer", nullable: true),
+                    PrecioCompra = table.Column<decimal>(type: "numeric", nullable: false),
+                    PrecioVenta = table.Column<decimal>(type: "numeric", nullable: true),
+                    Descripcion = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    FechaRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Producto", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Producto_Tiendas_TiendaActualId",
+                        column: x => x.TiendaActualId,
+                        principalTable: "Tiendas",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
                 {
@@ -196,6 +302,42 @@ namespace GestionIntApi.Migrations
                         name: "FK_Clientes_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MovimientoInventario",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    TipoMovimiento = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    FechaMovimiento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ProductoId = table.Column<int>(type: "integer", nullable: false),
+                    TiendaOrigenId = table.Column<int>(type: "integer", nullable: true),
+                    TiendaDestinoId = table.Column<int>(type: "integer", nullable: true),
+                    Observacion = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    UsuarioRegistro = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    MontoVenta = table.Column<decimal>(type: "numeric", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovimientoInventario", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MovimientoInventario_Producto_ProductoId",
+                        column: x => x.ProductoId,
+                        principalTable: "Producto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MovimientoInventario_Tiendas_TiendaDestinoId",
+                        column: x => x.TiendaDestinoId,
+                        principalTable: "Tiendas",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MovimientoInventario_Tiendas_TiendaOrigenId",
+                        column: x => x.TiendaOrigenId,
+                        principalTable: "Tiendas",
                         principalColumn: "Id");
                 });
 
@@ -334,6 +476,21 @@ namespace GestionIntApi.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "MenusAdmin",
+                columns: new[] { "Id", "Icono", "Nombre", "Url" },
+                values: new object[,]
+                {
+                    { 1, "dashboard", "DashBoard", "/pages/dashboard" },
+                    { 2, "payments", "Pagos", "/pages/pagos" },
+                    { 3, "inventory", "RegistrarBodega", "/pages/bodega/registrar" },
+                    { 4, "edit_attributes", "EditarBodega", "/pages/bodega/editar" },
+                    { 5, "storefront", "RegistrarTienda", "/pages/tienda/registrar" },
+                    { 6, "history", "Movimientos", "/pages/movimientos" },
+                    { 7, "assessment", "Reportes", "/pages/reportes" },
+                    { 8, "location_on", "Ubicacion", "/pages/ubicacion" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Rol",
                 columns: new[] { "Id", "Descripcion", "FechaRegistro" },
                 values: new object[,]
@@ -341,6 +498,37 @@ namespace GestionIntApi.Migrations
                     { 1, "Administrador", new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc) },
                     { 2, "Cliente", new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc) },
                     { 3, "Cajera", new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RolesAdmin",
+                columns: new[] { "Id", "Descripcion", "FechaRegistro" },
+                values: new object[,]
+                {
+                    { 1, "Administrador", new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc) },
+                    { 2, "Cliente", new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc) },
+                    { 3, "Cajera", new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "MenuRolAdmin",
+                columns: new[] { "Id", "MenuAdminId", "RolAdminId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 1 },
+                    { 3, 3, 1 },
+                    { 4, 4, 1 },
+                    { 5, 5, 1 },
+                    { 6, 6, 1 },
+                    { 7, 7, 1 },
+                    { 8, 8, 1 },
+                    { 9, 1, 3 },
+                    { 10, 2, 3 },
+                    { 11, 3, 3 },
+                    { 12, 5, 3 },
+                    { 13, 6, 3 },
+                    { 14, 7, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -386,6 +574,16 @@ namespace GestionIntApi.Migrations
                 column: "TiendaAppId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MenuRolAdmin_MenuAdminId",
+                table: "MenuRolAdmin",
+                column: "MenuAdminId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuRolAdmin_RolAdminId",
+                table: "MenuRolAdmin",
+                column: "RolAdminId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MenuRols_MenuId",
                 table: "MenuRols",
                 column: "MenuId");
@@ -396,9 +594,29 @@ namespace GestionIntApi.Migrations
                 column: "RolId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MovimientoInventario_ProductoId",
+                table: "MovimientoInventario",
+                column: "ProductoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovimientoInventario_TiendaDestinoId",
+                table: "MovimientoInventario",
+                column: "TiendaDestinoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovimientoInventario_TiendaOrigenId",
+                table: "MovimientoInventario",
+                column: "TiendaOrigenId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Notificacions_ClienteId",
                 table: "Notificacions",
                 column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Producto_TiendaActualId",
+                table: "Producto",
+                column: "TiendaActualId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RegistrosPagos_CreditoId",
@@ -419,6 +637,11 @@ namespace GestionIntApi.Migrations
                 name: "IX_Usuarios_RolId",
                 table: "Usuarios",
                 column: "RolId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsuariosAdmin_RolAdminId",
+                table: "UsuariosAdmin",
+                column: "RolAdminId");
         }
 
         /// <inheritdoc />
@@ -428,7 +651,13 @@ namespace GestionIntApi.Migrations
                 name: "EmailSettings");
 
             migrationBuilder.DropTable(
+                name: "MenuRolAdmin");
+
+            migrationBuilder.DropTable(
                 name: "MenuRols");
+
+            migrationBuilder.DropTable(
+                name: "MovimientoInventario");
 
             migrationBuilder.DropTable(
                 name: "Notificacions");
@@ -440,13 +669,25 @@ namespace GestionIntApi.Migrations
                 name: "Ubicacions");
 
             migrationBuilder.DropTable(
+                name: "UsuariosAdmin");
+
+            migrationBuilder.DropTable(
                 name: "VerificationCode");
+
+            migrationBuilder.DropTable(
+                name: "MenusAdmin");
 
             migrationBuilder.DropTable(
                 name: "Menus");
 
             migrationBuilder.DropTable(
+                name: "Producto");
+
+            migrationBuilder.DropTable(
                 name: "Creditos");
+
+            migrationBuilder.DropTable(
+                name: "RolesAdmin");
 
             migrationBuilder.DropTable(
                 name: "TiendaApps");

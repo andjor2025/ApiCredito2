@@ -14,11 +14,13 @@ namespace GestionIntApi.Repositorios.Implementacion
 
         private readonly IGenericRepository<UsuarioAdmin> _UsuarioRepositorio;
         private readonly IMapper _mapper;
+        private readonly SistemaGestionDBcontext _context;
 
-        public UsuarioAdminService(IGenericRepository<UsuarioAdmin> usuarioRepositorio, IMapper mapper)
+        public UsuarioAdminService(SistemaGestionDBcontext context,IGenericRepository<UsuarioAdmin> usuarioRepositorio, IMapper mapper)
         {
             _UsuarioRepositorio = usuarioRepositorio;
             _mapper = mapper;
+            _context = context;
         }
 
         public async Task<List<UsuarioAdminDTO>> listaUsuarios()
@@ -26,7 +28,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             try
             {
                 var queryUsuario = await _UsuarioRepositorio.Consultar();
-                var listaUsuario = queryUsuario.Include(rol => rol.Rol).ToList();
+                var listaUsuario = queryUsuario.Include(rol => rol.RolAdmin).ToList();
                 // Recorremos la lista de usuarios y reemplazamos el hash de la contraseña por el texto plano
                 return _mapper.Map<List<UsuarioAdminDTO>>(listaUsuario);
             }
@@ -43,7 +45,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             {
                 var odontologoEncontrado = await _UsuarioRepositorio
                     .Obtenerid(u => u.Id == id);
-                var listaUsuario = odontologoEncontrado.Include(rol => rol.Rol).ToList();
+                var listaUsuario = odontologoEncontrado.Include(rol => rol.RolAdmin).ToList();
                 var odontologo = listaUsuario.FirstOrDefault();
                 if (odontologo == null)
                     throw new TaskCanceledException("Usuario no encontrado");
@@ -64,7 +66,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                );
                 if (queryUsuario.FirstOrDefault() == null)
                     throw new TaskCanceledException("El usuario no existe");
-                UsuarioAdmin devolverUsuario = queryUsuario.Include(rol => rol.Rol).First();
+                UsuarioAdmin devolverUsuario = queryUsuario.Include(rol => rol.RolAdmin).First();
                 if (devolverUsuario.EsActivo == false) // Verificar el estado del usuario
                     throw new TaskCanceledException("El usuario está inactivo");
                 if (!BCrypt.Net.BCrypt.Verify(clave, devolverUsuario.Clave))
@@ -91,7 +93,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                 if (UsuarioCreado.Id == 0)
                     throw new TaskCanceledException("No se pudo Crear");
                 var query = await _UsuarioRepositorio.Consultar(u => u.Id == UsuarioCreado.Id);
-                UsuarioCreado = query.Include(rol => rol.Rol).First();
+                UsuarioCreado = query.Include(rol => rol.RolAdmin).First();
                 return _mapper.Map<UsuarioAdminDTO>(UsuarioCreado);
             }
             catch
@@ -116,7 +118,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                     throw new TaskCanceledException("El usuario no existe");
                 UsuarioEncontrado.NombreApellidos = UsuarioModelo.NombreApellidos;
                 UsuarioEncontrado.Correo = UsuarioModelo.Correo;
-                UsuarioEncontrado.RolId = UsuarioModelo.RolId;
+                UsuarioEncontrado.RolAdminId = UsuarioModelo.RolAdminId;
                 UsuarioEncontrado.Clave = UsuarioModelo.Clave;
                 UsuarioEncontrado.EsActivo = UsuarioModelo.EsActivo;
                 bool respuesta = await _UsuarioRepositorio.Editar(UsuarioEncontrado);
@@ -142,6 +144,13 @@ namespace GestionIntApi.Repositorios.Implementacion
             {
                 throw;
             }
+        }
+
+
+        public async Task<bool> ExisteCorreoAdmin(string correo)
+        {
+            return await _context.UsuariosAdmin
+                                 .AnyAsync(u => u.Correo.ToLower() == correo.ToLower());
         }
     }
 }

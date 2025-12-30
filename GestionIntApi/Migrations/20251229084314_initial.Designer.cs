@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GestionIntApi.Migrations
 {
     [DbContext(typeof(SistemaGestionDBcontext))]
-    [Migration("20251228064608_initial")]
+    [Migration("20251229084314_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -24,6 +24,381 @@ namespace GestionIntApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.MenuAdmin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Icono")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MenusAdmin");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Icono = "dashboard",
+                            Nombre = "DashBoard",
+                            Url = "/pages/dashboard"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Icono = "payments",
+                            Nombre = "Pagos",
+                            Url = "/pages/pagos"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Icono = "inventory",
+                            Nombre = "RegistrarBodega",
+                            Url = "/pages/bodega/registrar"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Icono = "edit_attributes",
+                            Nombre = "EditarBodega",
+                            Url = "/pages/bodega/editar"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Icono = "storefront",
+                            Nombre = "RegistrarTienda",
+                            Url = "/pages/tienda/registrar"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Icono = "history",
+                            Nombre = "Movimientos",
+                            Url = "/pages/movimientos"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Icono = "assessment",
+                            Nombre = "Reportes",
+                            Url = "/pages/reportes"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Icono = "location_on",
+                            Nombre = "Ubicacion",
+                            Url = "/pages/ubicacion"
+                        });
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.MenuRolAdmin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("MenuAdminId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("RolAdminId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuAdminId");
+
+                    b.HasIndex("RolAdminId");
+
+                    b.ToTable("MenuRolAdmin");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            MenuAdminId = 1,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            MenuAdminId = 2,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            MenuAdminId = 3,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            MenuAdminId = 4,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            MenuAdminId = 5,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            MenuAdminId = 6,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            MenuAdminId = 7,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            MenuAdminId = 8,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            MenuAdminId = 1,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            MenuAdminId = 2,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            MenuAdminId = 3,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            MenuAdminId = 5,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            MenuAdminId = 6,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 14,
+                            MenuAdminId = 7,
+                            RolAdminId = 3
+                        });
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.MovimientoInventario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaMovimiento")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal?>("MontoVenta")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Observacion")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("TiendaDestinoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("TiendaOrigenId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TipoMovimiento")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("UsuarioRegistro")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductoId");
+
+                    b.HasIndex("TiendaDestinoId");
+
+                    b.HasIndex("TiendaOrigenId");
+
+                    b.ToTable("MovimientoInventario");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.Producto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Color")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("IMEI")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Modelo")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<decimal>("PrecioCompra")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal?>("PrecioVenta")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Serie")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Tamano")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int?>("TiendaActualId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TipoProducto")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TiendaActualId");
+
+                    b.ToTable("Producto");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.RolAdmin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("FechaRegistro")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RolesAdmin");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Administrador",
+                            FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Cliente",
+                            FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Cajera",
+                            FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, 0, DateTimeKind.Utc)
+                        });
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.UsuarioAdmin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Clave")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Correo")
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("EsActivo")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("FechaRegistro")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NombreApellidos")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("RolAdminId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RolAdminId");
+
+                    b.ToTable("UsuariosAdmin");
+                });
 
             modelBuilder.Entity("GestionIntApi.Models.Cliente", b =>
                 {
@@ -639,6 +1014,62 @@ namespace GestionIntApi.Migrations
                     b.ToTable("VerificationCode");
                 });
 
+            modelBuilder.Entity("GestionIntApi.Models.Admin.MenuRolAdmin", b =>
+                {
+                    b.HasOne("GestionIntApi.Models.Admin.MenuAdmin", "MenuAdmin")
+                        .WithMany("MenuRolAdmins")
+                        .HasForeignKey("MenuAdminId");
+
+                    b.HasOne("GestionIntApi.Models.Admin.RolAdmin", "RolAdmin")
+                        .WithMany("MenuRolAdmins")
+                        .HasForeignKey("RolAdminId");
+
+                    b.Navigation("MenuAdmin");
+
+                    b.Navigation("RolAdmin");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.MovimientoInventario", b =>
+                {
+                    b.HasOne("GestionIntApi.Models.Admin.Producto", "Producto")
+                        .WithMany("Movimientos")
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GestionIntApi.Models.Tienda", "TiendaDestino")
+                        .WithMany()
+                        .HasForeignKey("TiendaDestinoId");
+
+                    b.HasOne("GestionIntApi.Models.Tienda", "TiendaOrigen")
+                        .WithMany()
+                        .HasForeignKey("TiendaOrigenId");
+
+                    b.Navigation("Producto");
+
+                    b.Navigation("TiendaDestino");
+
+                    b.Navigation("TiendaOrigen");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.Producto", b =>
+                {
+                    b.HasOne("GestionIntApi.Models.Tienda", "TiendaActual")
+                        .WithMany("ProductosActuales")
+                        .HasForeignKey("TiendaActualId");
+
+                    b.Navigation("TiendaActual");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.UsuarioAdmin", b =>
+                {
+                    b.HasOne("GestionIntApi.Models.Admin.RolAdmin", "RolAdmin")
+                        .WithMany("UsuarioAdmins")
+                        .HasForeignKey("RolAdminId");
+
+                    b.Navigation("RolAdmin");
+                });
+
             modelBuilder.Entity("GestionIntApi.Models.Cliente", b =>
                 {
                     b.HasOne("GestionIntApi.Models.DetalleCliente", "DetalleCliente")
@@ -738,6 +1169,23 @@ namespace GestionIntApi.Migrations
                     b.Navigation("Rol");
                 });
 
+            modelBuilder.Entity("GestionIntApi.Models.Admin.MenuAdmin", b =>
+                {
+                    b.Navigation("MenuRolAdmins");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.Producto", b =>
+                {
+                    b.Navigation("Movimientos");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.RolAdmin", b =>
+                {
+                    b.Navigation("MenuRolAdmins");
+
+                    b.Navigation("UsuarioAdmins");
+                });
+
             modelBuilder.Entity("GestionIntApi.Models.Cliente", b =>
                 {
                     b.Navigation("Creditos");
@@ -770,6 +1218,8 @@ namespace GestionIntApi.Migrations
 
             modelBuilder.Entity("GestionIntApi.Models.Tienda", b =>
                 {
+                    b.Navigation("ProductosActuales");
+
                     b.Navigation("TiendaApps");
                 });
 

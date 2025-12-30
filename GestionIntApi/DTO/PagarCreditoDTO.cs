@@ -28,7 +28,7 @@ namespace GestionIntApi.DTO
         public DateTime DiaPago { get; set; }
 
         public decimal ValorPorCuota { get; set; }
-
+        public string FechaCreditoStr { get; set; }
         public DateTime ProximaCuota { get; set; }
         public string? ProximaCuotaStr { get; set; }
         public string? Estado { get; set; }

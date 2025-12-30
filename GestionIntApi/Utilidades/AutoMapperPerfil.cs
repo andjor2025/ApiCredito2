@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using DocumentFormat.OpenXml.Presentation;
 using GestionIntApi.DTO;
+using GestionIntApi.DTO.Admin;
 using GestionIntApi.Models;
+using GestionIntApi.Models.Admin;
 
 namespace GestionIntApi.Utilidades
 {
@@ -82,6 +85,7 @@ namespace GestionIntApi.Utilidades
             CreateMap<Credito, PagarCreditoDTO>()
             .ForMember(dest => dest.ProximaCuotaStr,
                opt => opt.MapFrom(src => src.ProximaCuota.ToString("dd/MM/yyyy")));
+            
 
             #endregion Credito
             #region Tienda
@@ -104,6 +108,7 @@ namespace GestionIntApi.Utilidades
             #region Ubicacion
 
             CreateMap<Ubicacion, UbicacionDTO>().ReverseMap();
+            CreateMap<Ubicacion, UbicacionMostrarDTO>().ReverseMap();
             #endregion Ubicacion
 
             #region TiendaApp
@@ -121,6 +126,66 @@ namespace GestionIntApi.Utilidades
 
 
             CreateMap<TiendaMostrarAppVentaDTO, TiendaApp>();
+
+
+
+
+
+
+
+            #region RolAdmin
+            CreateMap<RolAdmin, RolAdminDto>().ReverseMap();
+            #endregion RolAdmin
+
+            #region MenuAdmin
+            CreateMap<MenuAdmin, MenuAdminDto>().ReverseMap();
+            #endregion MenuAdmin
+
+            #region UsuarioAdmin
+            CreateMap<UsuarioAdmin, UsuarioAdminDTO>()
+                   
+                    .ForMember(destino =>
+                        destino.RolDescripcion,
+                        opt => opt.MapFrom(origen => origen.RolAdmin.Descripcion)
+                    )
+
+                    .ForMember(destino =>
+                    destino.EsActivo,
+                    opt => opt.MapFrom(origen => origen.EsActivo == true ? 1 : 0)
+                );
+
+
+            CreateMap<UsuarioAdmin, SesionDTOAdmin>()
+                .ForMember(destino =>
+                    destino.RolAdminDescripcion,
+                    opt => opt.MapFrom(origen => origen.RolAdmin.Descripcion)
+                );
+
+            CreateMap<UsuarioAdminDTO, UsuarioAdmin>()
+              
+                 .ForMember(destino =>
+                    destino.RolAdmin,
+                    opt => opt.Ignore()
+                   )
+                 .ForMember(destino =>
+                    destino.EsActivo,
+                    opt => opt.MapFrom(origen => origen.EsActivo == 1 ? true : false)
+                   );
+
+           
+
+            #endregion UsuarioAdmin
+
+
+
+
+
+
+
+
+
+
+
 
         }
 

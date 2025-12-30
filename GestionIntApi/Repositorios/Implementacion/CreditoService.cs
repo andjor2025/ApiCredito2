@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Spreadsheet;
 using GestionIntApi.DTO;
 using GestionIntApi.Models;
@@ -522,16 +523,21 @@ namespace GestionIntApi.Repositorios.Implementacion
 
             // if (credito.MontoPendiente < 0)
             //   credito.MontoPendiente = 0; // evitar negativo
-
+            decimal TOLERANCIA = 0.40m;
+            if (credito.MontoPendiente > 0 && credito.MontoPendiente <= TOLERANCIA)
+            {
+                credito.MontoPendiente = 0;
+            }
             // =============================
             // Ajustes si ya se pagó completo
             // =============================
-            if (credito.MontoPendiente <= 0)
+            if (credito.MontoPendiente <= 0 && credito.MontoPendiente <= TOLERANCIA)
             {
                 credito.MontoPendiente = 0;
                 credito.ValorPorCuota = 0;
                 credito.ProximaCuota = credito.DiaPago; // fecha del último pago
                 credito.Estado = "Pagado";
+                credito.EstadoCuota = "Pagada";
             }
             else {
 
@@ -609,7 +615,7 @@ namespace GestionIntApi.Repositorios.Implementacion
 
             // 🔹 Calcular proximaCuotaStr como en GetCreditosClienteApp
             dto.ProximaCuotaStr = credito.ProximaCuota.ToString("dd/MM/yyyy");
-
+            dto.FechaCreditoStr = credito.FechaCreacion.ToString("dd/MM/yyyy");
             if (credito.Estado == "Pagado")
             {
                 dto.TiendaId = null;
@@ -729,6 +735,8 @@ namespace GestionIntApi.Repositorios.Implementacion
                 throw new Exception("Crédito no encontrado");
 
             var historial = new List<HistoriaAppDTO>();
+            // 🚩 IMPORTANTE: Usar la misma tolerancia que en RegistrarPago
+    decimal TOLERANCIA = 0.60m;
             decimal saldoRestante = credito.MontoTotal - credito.Entrada;
 
             // 1️⃣ Registrar entrada
@@ -760,7 +768,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             {
                 // Determinar estado del pago
                 string estado;
-                if (pagoRestante >= valorCuota)
+                if (pagoRestante >= (valorCuota - TOLERANCIA))
                 {
                     estado = "Pagado";
                     pagoRestante -= valorCuota;
@@ -796,6 +804,9 @@ namespace GestionIntApi.Repositorios.Implementacion
                 {
                     // Cuota normal
                     decimal nuevoSaldo = Math.Round(saldoRestante - valorCuota, 2);
+
+                    // Aplicar tolerancia al saldo visual
+                    if (nuevoSaldo > 0 && nuevoSaldo <= TOLERANCIA) nuevoSaldo = 0;
 
                     historial.Add(new HistoriaAppDTO
                     {

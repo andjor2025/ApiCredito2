@@ -1,8 +1,11 @@
 
 using GestionIntApi.Models;
+using GestionIntApi.Models.Admin;
 using GestionIntApi.Repositorios.Contrato;
 using GestionIntApi.Repositorios.Implementacion;
+using GestionIntApi.Repositorios.Implementacion.Admin;
 using GestionIntApi.Repositorios.Interfaces;
+using GestionIntApi.Repositorios.Interfaces.Admin;
 using GestionIntApi.Servicios.Implementacion;
 using GestionIntApi.Utilidades;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -151,6 +154,7 @@ builder.Services.AddCors(options => {
         app.AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod()
+        .SetIsOriginAllowed(origin => true)
         .SetIsOriginAllowedToAllowWildcardSubdomains();
     });
 
@@ -174,7 +178,8 @@ builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IDetalleClienteService, DetalleClienteService>();
 builder.Services.AddScoped<IClienteRepository, GenericRepositoryCliente>();
 builder.Services.AddScoped<ITiendaService, TiendaService>();
-
+builder.Services.AddScoped<IRolAdminRepository, RolAdminRepository>();
+builder.Services.AddScoped<IMenuAdminRepository, MenuAdminRepository>();
 builder.Services.AddScoped<INotificacionServicio,NotificacionService>();
 
 builder.Services.AddScoped<IReporteService, ReporteService>();
@@ -182,6 +187,8 @@ builder.Services.AddSingleton<ICodigoVerificacionService, CodigoVerificacionServ
 builder.Services.AddScoped<IUbicacionService, UbicacionService>();
 builder.Services.AddSingleton<IUserIdProvider, ClienteIdProvider_cs>();
 builder.Services.AddScoped<INotificacionRepository, NotificacionRepository>();
+builder.Services.AddSingleton<IRegistroTemporalAdminService, RegistroTemporalAdminService>();
+builder.Services.AddScoped<IUsuarioAdminRepository, UsuarioAdminService>();
 
 builder.Services.Configure<SendGridSettings>(
     builder.Configuration.GetSection("SendGrid"));
