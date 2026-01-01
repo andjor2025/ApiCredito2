@@ -14,7 +14,7 @@ namespace GestionIntApi.DTO
         [Required(ErrorMessage = "Los nombres y apellidos son obligatorios")]
         public string NombreApellidos { get; set; }
 
-        public string? NombrePropietario { get; set; }
+      
 
         [Required(ErrorMessage = "El teléfono es obligatorio")]
         [StringLength(10, MinimumLength = 7, ErrorMessage = "El teléfono debe tener entre 7 y 10 dígitos")]

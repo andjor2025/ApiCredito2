@@ -7,7 +7,7 @@
         public string NumeroCedula { get; set; }
         public string NombreApellidos { get; set; }
 
-        public string? NombrePropietario { get; set; }
+    //    public string? NombrePropietario { get; set; }
 
         public string Telefono { get; set; }
         public string Direccion { get; set; }

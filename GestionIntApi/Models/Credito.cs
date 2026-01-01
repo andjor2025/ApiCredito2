@@ -8,7 +8,7 @@
 
         // Valor total del celular
         public decimal MontoTotal { get; set; }
-
+        public string? NombrePropietario { get; set; }
         public decimal MontoPendiente { get; set; }
         public decimal Entrada { get; set; }
         public int PlazoCuotas { get; set; }

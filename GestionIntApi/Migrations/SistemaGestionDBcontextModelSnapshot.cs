@@ -48,57 +48,71 @@ namespace GestionIntApi.Migrations
                         {
                             Id = 1,
                             Icono = "dashboard",
-                            Nombre = "DashBoard",
-                            Url = "/pages/dashboard"
+                            Nombre = "Dashboard",
+                            Url = "panel-control"
                         },
                         new
                         {
                             Id = 2,
-                            Icono = "payments",
-                            Nombre = "Pagos",
-                            Url = "/pages/pagos"
+                            Icono = "admin_panel_settings",
+                            Nombre = "Usuarios Admin",
+                            Url = "gestion-administradores"
                         },
                         new
                         {
                             Id = 3,
-                            Icono = "inventory",
-                            Nombre = "RegistrarBodega",
-                            Url = "/pages/bodega/registrar"
+                            Icono = "how_to_reg",
+                            Nombre = "Registro App Móvil",
+                            Url = "registro-usuarios-app/nuevo"
                         },
                         new
                         {
                             Id = 4,
-                            Icono = "edit_attributes",
-                            Nombre = "EditarBodega",
-                            Url = "/pages/bodega/editar"
+                            Icono = "payments",
+                            Nombre = "Pagos",
+                            Url = "gestion-pagos"
                         },
                         new
                         {
                             Id = 5,
-                            Icono = "storefront",
-                            Nombre = "RegistrarTienda",
-                            Url = "/pages/tienda/registrar"
+                            Icono = "location_on",
+                            Nombre = "Ubicación",
+                            Url = "geolocalizacion-tiendas"
                         },
                         new
                         {
                             Id = 6,
-                            Icono = "history",
-                            Nombre = "Movimientos",
-                            Url = "/pages/movimientos"
+                            Icono = "inventory",
+                            Nombre = "Registrar Bodega",
+                            Url = "inventario/registro-bodega"
                         },
                         new
                         {
                             Id = 7,
-                            Icono = "assessment",
-                            Nombre = "Reportes",
-                            Url = "/pages/reportes"
+                            Icono = "edit_attributes",
+                            Nombre = "Editar Bodega",
+                            Url = "inventario/configuracion-bodega"
                         },
                         new
                         {
                             Id = 8,
-                            Icono = "location_on",
-                            Nombre = "Ubicacion",
-                            Url = "/pages/ubicacion"
+                            Icono = "storefront",
+                            Nombre = "Registrar Tienda",
+                            Url = "gestion-tiendas/nueva-sucursal"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Icono = "history",
+                            Nombre = "Movimientos",
+                            Url = "historial-movimientos"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Icono = "assessment",
+                            Nombre = "Reportes",
+                            Url = "reportes-generales"
                         });
                 });
 
@@ -176,37 +190,55 @@ namespace GestionIntApi.Migrations
                         new
                         {
                             Id = 9,
+                            MenuAdminId = 9,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            MenuAdminId = 10,
+                            RolAdminId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
                             MenuAdminId = 1,
                             RolAdminId = 3
                         },
                         new
                         {
-                            Id = 10,
-                            MenuAdminId = 2,
-                            RolAdminId = 3
-                        },
-                        new
-                        {
-                            Id = 11,
+                            Id = 12,
                             MenuAdminId = 3,
                             RolAdminId = 3
                         },
                         new
                         {
-                            Id = 12,
-                            MenuAdminId = 5,
-                            RolAdminId = 3
-                        },
-                        new
-                        {
                             Id = 13,
-                            MenuAdminId = 6,
+                            MenuAdminId = 4,
                             RolAdminId = 3
                         },
                         new
                         {
                             Id = 14,
-                            MenuAdminId = 7,
+                            MenuAdminId = 6,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 15,
+                            MenuAdminId = 8,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 16,
+                            MenuAdminId = 9,
+                            RolAdminId = 3
+                        },
+                        new
+                        {
+                            Id = 17,
+                            MenuAdminId = 10,
                             RolAdminId = 3
                         });
                 });
@@ -266,35 +298,33 @@ namespace GestionIntApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Color")
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Descripcion")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Estado")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("IMEI")
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Marca")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Modelo")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("text");
 
                     b.Property<decimal>("PrecioCompra")
                         .HasColumnType("numeric");
@@ -303,20 +333,17 @@ namespace GestionIntApi.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<string>("Serie")
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Tamano")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("text");
 
                     b.Property<int?>("TiendaActualId")
                         .HasColumnType("integer");
 
                     b.Property<string>("TipoProducto")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -483,6 +510,9 @@ namespace GestionIntApi.Migrations
                     b.Property<decimal>("MontoTotal")
                         .HasColumnType("numeric");
 
+                    b.Property<string>("NombrePropietario")
+                        .HasColumnType("text");
+
                     b.Property<int>("PlazoCuotas")
                         .HasColumnType("integer");
 
@@ -525,9 +555,6 @@ namespace GestionIntApi.Migrations
 
                     b.Property<string>("NombreApellidos")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("NombrePropietario")
                         .HasColumnType("text");
 
                     b.Property<string>("NumeroCedula")
@@ -610,41 +637,55 @@ namespace GestionIntApi.Migrations
                         new
                         {
                             Id = 3,
-                            Icono = "inventory",
-                            Nombre = "RegistrarBodega",
-                            Url = "/pages/bodega/registrar"
+                            Icono = "person",
+                            Nombre = "Usuario App",
+                            Url = "/pages/usuarioApp"
                         },
                         new
                         {
                             Id = 4,
-                            Icono = "edit_attributes",
-                            Nombre = "EditarBodega",
-                            Url = "/pages/bodega/editar"
+                            Icono = "admin_panel_settings",
+                            Nombre = "Usuario Admin",
+                            Url = "/pages/usuarioAdmin"
                         },
                         new
                         {
                             Id = 5,
-                            Icono = "storefront",
-                            Nombre = "RegistrarTienda",
-                            Url = "/pages/tienda/registrar"
+                            Icono = "inventory",
+                            Nombre = "Registrar Bodega",
+                            Url = "/pages/bodega/registrar"
                         },
                         new
                         {
                             Id = 6,
+                            Icono = "edit_attributes",
+                            Nombre = "Editar Bodega",
+                            Url = "/pages/bodega/editar"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Icono = "storefront",
+                            Nombre = "Registrar Tienda",
+                            Url = "/pages/tienda/registrar"
+                        },
+                        new
+                        {
+                            Id = 8,
                             Icono = "history",
                             Nombre = "Movimientos",
                             Url = "/pages/movimientos"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 9,
                             Icono = "assessment",
                             Nombre = "Reportes",
                             Url = "/pages/reportes"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 10,
                             Icono = "location_on",
                             Nombre = "Ubicacion",
                             Url = "/pages/ubicacion"
@@ -719,37 +760,61 @@ namespace GestionIntApi.Migrations
                         new
                         {
                             Id = 8,
+                            MenuId = 8,
+                            RolId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            MenuId = 9,
+                            RolId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            MenuId = 10,
+                            RolId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
                             MenuId = 1,
                             RolId = 3
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 12,
                             MenuId = 2,
                             RolId = 3
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 13,
                             MenuId = 3,
                             RolId = 3
                         },
                         new
                         {
-                            Id = 11,
+                            Id = 14,
                             MenuId = 5,
                             RolId = 3
                         },
                         new
                         {
-                            Id = 12,
-                            MenuId = 6,
+                            Id = 15,
+                            MenuId = 7,
                             RolId = 3
                         },
                         new
                         {
-                            Id = 13,
-                            MenuId = 7,
+                            Id = 16,
+                            MenuId = 8,
+                            RolId = 3
+                        },
+                        new
+                        {
+                            Id = 17,
+                            MenuId = 9,
                             RolId = 3
                         });
                 });

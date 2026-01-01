@@ -11,6 +11,7 @@ namespace GestionIntApi.DTO
         [Range(0, double.MaxValue, ErrorMessage = "La entrada debe ser un número positivo")]
         public decimal Entrada { get; set; }
 
+        public string? NombrePropietario { get; set; }
 
         [Required(ErrorMessage = "El monto total es obligatorio")]
         [Range(1, double.MaxValue, ErrorMessage = "El monto total debe ser mayor a 0")]

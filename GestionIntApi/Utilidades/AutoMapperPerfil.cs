@@ -189,7 +189,7 @@ namespace GestionIntApi.Utilidades
                     opt => opt.MapFrom(origen => origen.EsActivo == 1 ? true : false)
                    );
 
-           
+
 
             #endregion UsuarioAdmin
 
@@ -200,9 +200,17 @@ namespace GestionIntApi.Utilidades
 
 
 
+            CreateMap<Producto, ProductoBodegaDTO>()
+    .ForMember(dest => dest.FechaIngreso, opt => opt.MapFrom(src => src.FechaRegistro))
+    .ForMember(dest => dest.DiasEnBodega, opt => opt.MapFrom(src => (DateTime.UtcNow - src.FechaRegistro).Days));
 
 
 
+            // Esto soluciona tu error "Missing type map configuration"
+            CreateMap<ProductoBodegaDTO, Producto>()
+                .ForMember(dest => dest.FechaRegistro, opt => opt.Ignore()) // La fecha la maneja la DB o el Service
+                .ForMember(dest => dest.TiendaActual, opt => opt.Ignore())
+                .ForMember(dest => dest.Movimientos, opt => opt.Ignore());
 
         }
 

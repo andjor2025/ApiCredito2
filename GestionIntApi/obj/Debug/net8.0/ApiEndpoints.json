@@ -790,6 +790,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GestionIntApi.Controllers.Admin.ProductoBodegaController",
+    "Method": "Crear",
+    "RelativePath": "api/ProductoBodega/Crear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GestionIntApi.DTO.Admin.ProductoBodegaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.ProductoBodegaController",
+    "Method": "Editar",
+    "RelativePath": "api/ProductoBodega/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GestionIntApi.DTO.Admin.ProductoBodegaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.ProductoBodegaController",
+    "Method": "Eliminar",
+    "RelativePath": "api/ProductoBodega/Eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.ProductoBodegaController",
+    "Method": "Lista",
+    "RelativePath": "api/ProductoBodega/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.ProductoBodegaController",
+    "Method": "ObtenerPorID",
+    "RelativePath": "api/ProductoBodega/Obtener/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GestionIntApi.Controllers.Rol",
     "Method": "Lista",
     "RelativePath": "api/Rol/Lista",

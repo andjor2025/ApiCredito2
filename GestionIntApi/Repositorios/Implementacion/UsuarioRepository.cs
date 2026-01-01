@@ -537,7 +537,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                     detDb.NombreApellidos = detMod.NombreApellidos;
                     detDb.Telefono = detMod.Telefono;
                     detDb.Direccion = detMod.Direccion;
-                    detDb.NombrePropietario = detMod.NombrePropietario;
+                  //  detDb.NombrePropietario = detMod.NombrePropietario;
                 }
 
                 // 4. Actualizamos TiendaApp y el Crédito específico
@@ -568,6 +568,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                         creditoDb.Modelo = creditoMod.Modelo;
                         creditoDb.IMEI = creditoMod.IMEI;
                         creditoDb.Capacidad = creditoMod.Capacidad;
+                        creditoDb.NombrePropietario = creditoMod.NombrePropietario;
                     }
                 }
 

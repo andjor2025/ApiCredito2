@@ -189,6 +189,7 @@ builder.Services.AddSingleton<IUserIdProvider, ClienteIdProvider_cs>();
 builder.Services.AddScoped<INotificacionRepository, NotificacionRepository>();
 builder.Services.AddSingleton<IRegistroTemporalAdminService, RegistroTemporalAdminService>();
 builder.Services.AddScoped<IUsuarioAdminRepository, UsuarioAdminService>();
+builder.Services.AddScoped<IProductoBodega, ProductoBodegaService>();
 
 
 builder.Services.Configure<SendGridSettings>(

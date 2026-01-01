@@ -22,7 +22,6 @@ namespace GestionIntApi.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NumeroCedula = table.Column<string>(type: "text", nullable: false),
                     NombreApellidos = table.Column<string>(type: "text", nullable: false),
-                    NombrePropietario = table.Column<string>(type: "text", nullable: true),
                     Telefono = table.Column<string>(type: "text", nullable: false),
                     Direccion = table.Column<string>(type: "text", nullable: false)
                 },
@@ -256,18 +255,19 @@ namespace GestionIntApi.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    TipoProducto = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
-                    IMEI = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
-                    Serie = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
-                    Marca = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Modelo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Color = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
-                    Tamano = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
-                    Estado = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Codigo = table.Column<string>(type: "text", nullable: false),
+                    TipoProducto = table.Column<string>(type: "text", nullable: false),
+                    IMEI = table.Column<string>(type: "text", nullable: true),
+                    Serie = table.Column<string>(type: "text", nullable: true),
+                    Marca = table.Column<string>(type: "text", nullable: false),
+                    Modelo = table.Column<string>(type: "text", nullable: false),
+                    Color = table.Column<string>(type: "text", nullable: true),
+                    Tamano = table.Column<string>(type: "text", nullable: true),
+                    Estado = table.Column<string>(type: "text", nullable: false),
                     TiendaActualId = table.Column<int>(type: "integer", nullable: true),
                     PrecioCompra = table.Column<decimal>(type: "numeric", nullable: false),
                     PrecioVenta = table.Column<decimal>(type: "numeric", nullable: true),
-                    Descripcion = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    Descripcion = table.Column<string>(type: "text", nullable: true),
                     FechaRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
@@ -400,6 +400,7 @@ namespace GestionIntApi.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     MontoTotal = table.Column<decimal>(type: "numeric", nullable: false),
+                    NombrePropietario = table.Column<string>(type: "text", nullable: true),
                     MontoPendiente = table.Column<decimal>(type: "numeric", nullable: false),
                     Entrada = table.Column<decimal>(type: "numeric", nullable: false),
                     PlazoCuotas = table.Column<int>(type: "integer", nullable: false),
@@ -467,12 +468,14 @@ namespace GestionIntApi.Migrations
                 {
                     { 1, "dashboard", "DashBoard", "/pages/dashboard" },
                     { 2, "payments", "Pagos", "/pages/pagos" },
-                    { 3, "inventory", "RegistrarBodega", "/pages/bodega/registrar" },
-                    { 4, "edit_attributes", "EditarBodega", "/pages/bodega/editar" },
-                    { 5, "storefront", "RegistrarTienda", "/pages/tienda/registrar" },
-                    { 6, "history", "Movimientos", "/pages/movimientos" },
-                    { 7, "assessment", "Reportes", "/pages/reportes" },
-                    { 8, "location_on", "Ubicacion", "/pages/ubicacion" }
+                    { 3, "person", "Usuario App", "/pages/usuarioApp" },
+                    { 4, "admin_panel_settings", "Usuario Admin", "/pages/usuarioAdmin" },
+                    { 5, "inventory", "Registrar Bodega", "/pages/bodega/registrar" },
+                    { 6, "edit_attributes", "Editar Bodega", "/pages/bodega/editar" },
+                    { 7, "storefront", "Registrar Tienda", "/pages/tienda/registrar" },
+                    { 8, "history", "Movimientos", "/pages/movimientos" },
+                    { 9, "assessment", "Reportes", "/pages/reportes" },
+                    { 10, "location_on", "Ubicacion", "/pages/ubicacion" }
                 });
 
             migrationBuilder.InsertData(
@@ -480,14 +483,16 @@ namespace GestionIntApi.Migrations
                 columns: new[] { "Id", "Icono", "Nombre", "Url" },
                 values: new object[,]
                 {
-                    { 1, "dashboard", "DashBoard", "/pages/dashboard" },
-                    { 2, "payments", "Pagos", "/pages/pagos" },
-                    { 3, "inventory", "RegistrarBodega", "/pages/bodega/registrar" },
-                    { 4, "edit_attributes", "EditarBodega", "/pages/bodega/editar" },
-                    { 5, "storefront", "RegistrarTienda", "/pages/tienda/registrar" },
-                    { 6, "history", "Movimientos", "/pages/movimientos" },
-                    { 7, "assessment", "Reportes", "/pages/reportes" },
-                    { 8, "location_on", "Ubicacion", "/pages/ubicacion" }
+                    { 1, "dashboard", "Dashboard", "panel-control" },
+                    { 2, "admin_panel_settings", "Usuarios Admin", "gestion-administradores" },
+                    { 3, "how_to_reg", "Registro App Móvil", "registro-usuarios-app/nuevo" },
+                    { 4, "payments", "Pagos", "gestion-pagos" },
+                    { 5, "location_on", "Ubicación", "geolocalizacion-tiendas" },
+                    { 6, "inventory", "Registrar Bodega", "inventario/registro-bodega" },
+                    { 7, "edit_attributes", "Editar Bodega", "inventario/configuracion-bodega" },
+                    { 8, "storefront", "Registrar Tienda", "gestion-tiendas/nueva-sucursal" },
+                    { 9, "history", "Movimientos", "historial-movimientos" },
+                    { 10, "assessment", "Reportes", "reportes-generales" }
                 });
 
             migrationBuilder.InsertData(
@@ -523,12 +528,15 @@ namespace GestionIntApi.Migrations
                     { 6, 6, 1 },
                     { 7, 7, 1 },
                     { 8, 8, 1 },
-                    { 9, 1, 3 },
-                    { 10, 2, 3 },
-                    { 11, 3, 3 },
-                    { 12, 5, 3 },
-                    { 13, 6, 3 },
-                    { 14, 7, 3 }
+                    { 9, 9, 1 },
+                    { 10, 10, 1 },
+                    { 11, 1, 3 },
+                    { 12, 3, 3 },
+                    { 13, 4, 3 },
+                    { 14, 6, 3 },
+                    { 15, 8, 3 },
+                    { 16, 9, 3 },
+                    { 17, 10, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -543,12 +551,16 @@ namespace GestionIntApi.Migrations
                     { 5, 5, 1 },
                     { 6, 6, 1 },
                     { 7, 7, 1 },
-                    { 8, 1, 3 },
-                    { 9, 2, 3 },
-                    { 10, 3, 3 },
-                    { 11, 5, 3 },
-                    { 12, 6, 3 },
-                    { 13, 7, 3 }
+                    { 8, 8, 1 },
+                    { 9, 9, 1 },
+                    { 10, 10, 1 },
+                    { 11, 1, 3 },
+                    { 12, 2, 3 },
+                    { 13, 3, 3 },
+                    { 14, 5, 3 },
+                    { 15, 7, 3 },
+                    { 16, 8, 3 },
+                    { 17, 9, 3 }
                 });
 
             migrationBuilder.CreateIndex(
