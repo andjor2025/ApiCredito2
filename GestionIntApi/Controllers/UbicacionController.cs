@@ -136,12 +136,26 @@ namespace GestionIntApi.Controllers
         {
             try
             {
-                var ubicaciones = await _ubicacionService.ObtenerPorUsuario(usuarioId);
+                var ubicaciones = await _ubicacionService.ObtenerUltima(usuarioId);
                 return Ok(new { isSuccess = true, data = ubicaciones });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new { isSuccess = false, message = $"Error: {ex.Message}" });
+            }
+        }
+
+        [HttpGet("ListarUltimasUbicaciones")]
+        public async Task<IActionResult> ListarUltimasUbicaciones()
+        {
+            try
+            {
+                var lista = await _ubicacionService.ListarUltimasUbicaciones();
+                return Ok(new { isSuccess = true, data = lista });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { isSuccess = false, message = ex.Message });
             }
         }
     }

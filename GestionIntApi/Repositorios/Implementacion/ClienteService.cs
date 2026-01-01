@@ -358,6 +358,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                 listaResultado = clientes
                     .SelectMany(cliente => cliente.Creditos.Select(credito => new ReporteDTO
                     {
+                        CodigoUnico = $"CRE-{credito.FechaCreacion.Year}-{credito.Id:D5}",
                         // CLIENTE
                         ClienteId = cliente.Id,
                         NombreCliente = $"{cliente.DetalleCliente.NombreApellidos}", // Ajustar según tu modelo

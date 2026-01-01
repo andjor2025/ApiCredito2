@@ -7,6 +7,7 @@ namespace GestionIntApi.Repositorios.Interfaces
     {
         Task<UbicacionDTO> Registrar(double latitud, double longitud, int usuarioId);
         Task<List<UbicacionMostrarDTO>> ObtenerPorUsuario(int usuarioId);
-        Task<UbicacionDTO> ObtenerUltima(int usuarioId);
+        Task<UbicacionMostrarDTO> ObtenerUltima(int usuarioId);
+        Task<List<UbicacionMostrarDTO>> ListarUltimasUbicaciones();
     }
 }

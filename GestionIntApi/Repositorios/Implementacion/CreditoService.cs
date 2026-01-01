@@ -534,7 +534,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             if (credito.MontoPendiente <= 0 && credito.MontoPendiente <= TOLERANCIA)
             {
                 credito.MontoPendiente = 0;
-                credito.ValorPorCuota = 0;
+              //  credito.ValorPorCuota = 0;
                 credito.ProximaCuota = credito.DiaPago; // fecha del último pago
                 credito.Estado = "Pagado";
                 credito.EstadoCuota = "Pagada";
@@ -587,12 +587,23 @@ namespace GestionIntApi.Repositorios.Implementacion
             // =============================
             // 7. Estado de la cuota (SOLO Pendiente o Atrasada)
             // =============================
-            credito.EstadoCuota =
-                DateTime.UtcNow.Date > credito.ProximaCuota.Date
-                    ? "Atrasada"
-                    : "Pendiente";
 
-            // =============================
+
+            if (credito.MontoPendiente <= 0) {
+
+                credito.EstadoCuota = "Pagada";
+            }
+            else {
+
+                credito.EstadoCuota =
+                       DateTime.UtcNow.Date > credito.ProximaCuota.Date
+                           ? "Atrasada"
+                           : "Pendiente";
+
+                // 
+
+            }
+              // =============================
             // 6. Guardar cambios en BD
             // =============================
             await _creditoRepository.Editar(credito);

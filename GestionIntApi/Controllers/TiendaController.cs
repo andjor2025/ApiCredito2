@@ -120,6 +120,25 @@ namespace GestionIntApi.Controllers
             return Ok(rsp);
         }
 
+        [HttpPut]
+        [Route("Editar")]
+        public async Task<IActionResult> Editar([FromBody] TiendaAdminDTO tienda)
+        {
+            var rsp = new Response<bool>();
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _TiendaServicios.EditarTienda(tienda);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
+
+
         /*
 
         [HttpGet("tiendaApp/{clienteId}")]
@@ -323,5 +342,5 @@ namespace GestionIntApi.Controllers
         */
     }
 
-        
+
 }

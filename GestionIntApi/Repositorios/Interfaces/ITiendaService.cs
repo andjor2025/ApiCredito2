@@ -20,6 +20,7 @@ namespace GestionIntApi.Repositorios.Interfaces
         Task<bool> EliminarTienda(int id);
 
         Task<List<TiendaMostrarAppVentaDTO>> GetFechaVenta(int clienteId);
+        Task<bool> EditarTienda(TiendaAdminDTO modelo);
 
     }
 }

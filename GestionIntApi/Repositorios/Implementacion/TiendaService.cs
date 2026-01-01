@@ -61,6 +61,36 @@ namespace GestionIntApi.Repositorios.Implementacion
 
             return _mapper.Map<TiendaAdminDTO>(tienda);
         }
+
+        public async Task<bool> EditarTienda(TiendaAdminDTO modelo)
+        {
+            try
+            {
+                // 1. Buscamos la tienda existente por ID
+                var consulta = await _tiendaRepository.Consultar(t => t.Id == modelo.Id);
+                var tiendaParaEditar = consulta.FirstOrDefault();
+
+                if (tiendaParaEditar == null)
+                    throw new TaskCanceledException("La tienda no existe");
+
+                // 2. Mapeamos los datos del DTO a la Entidad (Actualizamos los campos)
+                tiendaParaEditar.NombreTienda = modelo.NombreTienda;
+                tiendaParaEditar.NombreEncargado = modelo.NombreEncargado;
+                tiendaParaEditar.CedulaEncargado = modelo.CedulaEncargado;
+                tiendaParaEditar.Telefono = modelo.Telefono;
+                tiendaParaEditar.Direccion = modelo.Direccion;
+                // La fecha de registro normalmente no se edita, se mantiene la original
+
+                // 3. Ejecutamos la edición en el repositorio
+                bool respuesta = await _tiendaRepository.Editar(tiendaParaEditar);
+
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         // 3️⃣ APP → ASOCIAR TIENDA A CLIENTE
         // ===============================
         public async Task<bool> AsociarTiendaCliente1(TiendaAppDTO dto)

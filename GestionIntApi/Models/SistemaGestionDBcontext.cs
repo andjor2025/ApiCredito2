@@ -116,6 +116,7 @@ namespace GestionIntApi.Models
                 new MenuAdmin { Id = 1, Nombre = "DashBoard", Icono = "dashboard", Url = "/pages/dashboard" },
                 new MenuAdmin { Id = 2, Nombre = "Pagos", Icono = "payments", Url = "/pages/pagos" },
                 new MenuAdmin { Id = 3, Nombre = "RegistrarBodega", Icono = "inventory", Url = "/pages/bodega/registrar" },
+                
                 new MenuAdmin { Id = 4, Nombre = "EditarBodega", Icono = "edit_attributes", Url = "/pages/bodega/editar" },
                 new MenuAdmin { Id = 5, Nombre = "RegistrarTienda", Icono = "storefront", Url = "/pages/tienda/registrar" },
                 new MenuAdmin { Id = 6, Nombre = "Movimientos", Icono = "history", Url = "/pages/movimientos" },

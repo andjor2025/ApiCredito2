@@ -2,6 +2,7 @@
 using AutoMapper;
 using GestionIntApi.DTO;
 using GestionIntApi.DTO;
+using GestionIntApi.DTO.Admin;
 using GestionIntApi.Models;
 using GestionIntApi.Repositorios.Contrato;
 using GestionIntApi.Repositorios.Contrato;
@@ -92,8 +93,44 @@ namespace GestionIntApi.Controllers
                 return StatusCode(500, "Error al obtener el Odontólogo por ID");
             }
         }
-        
-                [HttpPost]
+
+
+
+        [HttpGet("ObtenerCompleto/{id}")]
+        public async Task<ActionResult<UsuarioCompletoDto>> GetByIdCompleto(int id)
+        {
+            try
+            {
+                var odontologo = await _UsuarioServicios.ObtenerRegistroIntegralPorId(id);
+                if (odontologo == null)
+                    return NotFound();
+                return Ok(odontologo);
+            }
+            catch
+            {
+                return StatusCode(500, "Error al obtener el Odontólogo por ID");
+            }
+        }
+
+
+        [HttpGet("ObtenerCompletoSinId")]
+        public async Task<ActionResult<UsuarioCompletoDto>> GetByIdCompletoSinId()
+        {
+            try
+            {
+                var odontologo = await _UsuarioServicios.ObtenerTodosIntegral();
+                if (odontologo == null)
+                    return NotFound();
+                return Ok(odontologo);
+            }
+            catch
+            {
+                return StatusCode(500, "Error al obtener el registro completo");
+            }
+        }
+
+
+        [HttpPost]
                 [Route("Guardar")]
                 public async Task<IActionResult> Guardar1([FromBody] UsuarioDTO usuario)
                 {
@@ -211,6 +248,25 @@ namespace GestionIntApi.Controllers
             {
                 rsp.status = true;
                 rsp.value = await _UsuarioServicios.editarUsuario(Usuario);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
+
+
+        [HttpPut]
+        [Route("EditarCompleto")]
+        public async Task<IActionResult> EditarCompleto([FromBody] UsuarioCompletoDto Usuario)
+        {
+            var rsp = new Response<bool>();
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _UsuarioServicios.EditarRegistroIntegral(Usuario);
             }
             catch (Exception ex)
             {

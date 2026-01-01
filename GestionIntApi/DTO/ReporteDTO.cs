@@ -6,6 +6,7 @@ namespace GestionIntApi.DTO
     {
         // ===== CLIENTE =====
         public int ClienteId { get; set; }
+        public string CodigoUnico { get; set; }
         public string NombreCliente { get; set; }
         public string Cedula { get; set; }
         public string TelefonoCliente { get; set; }

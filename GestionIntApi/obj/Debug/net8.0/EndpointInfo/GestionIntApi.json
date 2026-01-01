@@ -1447,6 +1447,37 @@
         }
       }
     },
+    "/api/Tienda/Editar": {
+      "put": {
+        "tags": [
+          "Tienda"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TiendaAdminDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TiendaAdminDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TiendaAdminDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TiendaApp/tiendasApp": {
       "get": {
         "tags": [
@@ -1743,6 +1774,18 @@
         }
       }
     },
+    "/api/Ubicacion/ListarUltimasUbicaciones": {
+      "get": {
+        "tags": [
+          "Ubicacion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Usuario/IniciarSesion": {
       "post": {
         "tags": [
@@ -1819,6 +1862,75 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UsuarioDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuario/ObtenerCompleto/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioCompletoDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioCompletoDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioCompletoDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuario/ObtenerCompletoSinId": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioCompletoDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioCompletoDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioCompletoDto"
                 }
               }
             }
@@ -1908,6 +2020,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/UsuarioDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuario/EditarCompleto": {
+      "put": {
+        "tags": [
+          "Usuario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCompletoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCompletoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCompletoDto"
               }
             }
           }
@@ -2697,6 +2840,51 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioCompletoDto": {
+        "required": [
+          "clave",
+          "correo",
+          "nombreApellidos"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreApellidos": {
+            "minLength": 3,
+            "type": "string"
+          },
+          "correo": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "rolId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "rolDescripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "clave": {
+            "minLength": 6,
+            "type": "string"
+          },
+          "esActivo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cliente": {
+            "$ref": "#/components/schemas/ClienteDTO"
           }
         },
         "additionalProperties": false

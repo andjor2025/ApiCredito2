@@ -34,6 +34,22 @@ namespace GestionIntApi.Utilidades
                 opt => opt.MapFrom(origen => origen.EsActivo == true ? 1 : 0)
             );
 
+            CreateMap<Usuario, UsuarioCompletoDto>()
+     // Quitamos el .Ignore() de Cliente para que sí lo mapee
+     .ForMember(destino => destino.RolDescripcion,
+         opt => opt.MapFrom(origen => origen.Rol.Descripcion)
+     )
+     .ForMember(destino => destino.EsActivo,
+         opt => opt.MapFrom(origen => origen.EsActivo == true ? 1 : 0)
+     );
+
+            // Para el camino inverso (DTO a Entidad)
+            CreateMap<UsuarioDTO, UsuarioCompletoDto>()
+                // También quitamos el Ignore de Cliente aquí para poder guardar
+              //  .ForMember(destino => destino.Rol, opt => opt.Ignore())
+                .ForMember(destino => destino.EsActivo,
+                    opt => opt.MapFrom(origen => origen.EsActivo == 1 ? true : false)
+                );
 
             CreateMap<Usuario, SesionDTO>()
                 .ForMember(destino =>
@@ -108,7 +124,8 @@ namespace GestionIntApi.Utilidades
             #region Ubicacion
 
             CreateMap<Ubicacion, UbicacionDTO>().ReverseMap();
-            CreateMap<Ubicacion, UbicacionMostrarDTO>().ReverseMap();
+           CreateMap<Ubicacion, UbicacionMostrarDTO>().ReverseMap();
+           
             #endregion Ubicacion
 
             #region TiendaApp

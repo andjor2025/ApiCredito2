@@ -1,24 +1,25 @@
 ﻿using AutoMapper;
 using BCrypt.Net;
 using GestionIntApi.DTO;
+using GestionIntApi.DTO.Admin;
 using GestionIntApi.Models;
 using GestionIntApi.Repositorios;
 using GestionIntApi.Repositorios.Contrato;
 using GestionIntApi.Repositorios.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using Microsoft.Extensions.Configuration;
 
 
 namespace GestionIntApi.Repositorios.Implementacion
@@ -302,8 +303,9 @@ namespace GestionIntApi.Repositorios.Implementacion
                 // ✅ PASO 2: Si pasó todas las validaciones, ahora sí guardamos
 
                 // 1. Encripta la contraseña
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(modelo.Clave);
+               string hashedPassword = BCrypt.Net.BCrypt.HashPassword(modelo.Clave);
                 modelo.Clave = hashedPassword;
+               //modelo.Clave = modelo.Clave;
                 var UsuarioCreado = await _UsuarioRepositorio.Crear(_mapper.Map<Usuario>(modelo));
 
                 // 2. Guardar DetalleCliente
@@ -391,6 +393,196 @@ namespace GestionIntApi.Repositorios.Implementacion
             }
         }
 
+        public async Task<List<UsuarioCompletoDto>> ObtenerTodosIntegral()
+        {
+            try
+            {
+                // 1. Consultamos TODOS los usuarios con sus relaciones
+                var usuarios = await _context.Usuarios
+                    .Include(u => u.Rol)
+                    .Include(u => u.Cliente)
+                        .ThenInclude(c => c.DetalleCliente)
+                    .AsNoTracking()
+                    .ToListAsync();
+
+                var listaDto = new List<UsuarioCompletoDto>();
+
+                foreach (var usuario in usuarios)
+                {
+                    var dto = _mapper.Map<UsuarioCompletoDto>(usuario);
+
+                    // 2. Buscamos el ÚLTIMO crédito para cada usuario
+                    if (usuario.Cliente != null)
+                    {
+                        var ultimoCredito = await _context.Creditos
+                            .Include(c => c.TiendaApp)
+                            .Where(c => c.ClienteId == usuario.Cliente.Id)
+                            .OrderByDescending(c => c.Id)
+                            .FirstOrDefaultAsync();
+
+                        if (ultimoCredito != null)
+                        {
+                            var creditoDto = _mapper.Map<CreditoDTO>(ultimoCredito);
+                            dto.Cliente.Creditos = new List<CreditoDTO> { creditoDto };
+
+                            if (ultimoCredito.TiendaApp != null)
+                            {
+                                dto.Cliente.TiendaApps = new List<TiendaAppDTO> {
+                            _mapper.Map<TiendaAppDTO>(ultimoCredito.TiendaApp)
+                        };
+                            }
+                        }
+                    }
+                    listaDto.Add(dto);
+                }
+
+                return listaDto;
+            }
+            catch (Exception) { throw; }
+        }
+
+        public async Task<UsuarioCompletoDto> ObtenerRegistroIntegralPorId(int idUsuario)
+        {
+            try
+            {
+                // 1. Consultamos el usuario con su cliente y detalle
+                var usuario = await _context.Usuarios
+                    .Include(u => u.Rol)
+                    .Include(u => u.Cliente)
+                        .ThenInclude(c => c.DetalleCliente)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(u => u.Id == idUsuario);
+
+                if (usuario == null) throw new TaskCanceledException("Usuario no encontrado");
+
+                var dto = _mapper.Map<UsuarioCompletoDto>(usuario);
+
+                // 2. Buscamos el ÚLTIMO crédito manualmente con su TiendaApp
+                if (usuario.Cliente != null)
+                {
+                    var ultimoCredito = await _context.Creditos
+                        .Include(c => c.TiendaApp) // Traemos la tienda asociada al crédito
+                        .Where(c => c.ClienteId == usuario.Cliente.Id)
+                        .OrderByDescending(c => c.Id) // El último registrado
+                        .FirstOrDefaultAsync();
+
+                    if (ultimoCredito != null)
+                    {
+                        // Mapeamos el crédito y lo asignamos a la lista del DTO
+                        var creditoDto = _mapper.Map<CreditoDTO>(ultimoCredito);
+                        dto.Cliente.Creditos = new List<CreditoDTO> { creditoDto };
+
+                        // Si necesitas enviar los datos de la tienda en el DTO de TiendaApps
+                        if (ultimoCredito.TiendaApp != null)
+                        {
+                            dto.Cliente.TiendaApps = new List<TiendaAppDTO> {
+                        _mapper.Map<TiendaAppDTO>(ultimoCredito.TiendaApp)
+                    };
+                        }
+                    }
+                }
+
+                return dto;
+            }
+            catch (Exception) { throw; }
+        }
+
+        public async Task<bool> EditarRegistroIntegral(UsuarioCompletoDto modelo)
+        {
+            try
+            {
+                // 1. Cargamos todo el objeto con sus hijos en una sola consulta
+                var usuarioDb = await _context.Usuarios
+                    .Include(u => u.Cliente)
+                        .ThenInclude(c => c.DetalleCliente)
+                    .Include(u => u.Cliente)
+                        .ThenInclude(c => c.Creditos)
+                    .Include(u => u.Cliente)
+                        .ThenInclude(c => c.TiendaApps)
+                    .FirstOrDefaultAsync(u => u.Id == modelo.Id);
+
+                if (usuarioDb == null) return false;
+
+                // 2. Actualizamos el Usuario
+                usuarioDb.NombreApellidos = modelo.NombreApellidos;
+                usuarioDb.Correo = modelo.Correo;
+               // usuarioDb.Clave = modelo.Clave;
+                usuarioDb.RolId = modelo.RolId;
+                usuarioDb.EsActivo = modelo.EsActivo == 1;
+                // 🔥 LÓGICA DE CONTRASEÑA SEGURA
+                if (!string.IsNullOrWhiteSpace(modelo.Clave))
+                {
+                    string nuevaClave = modelo.Clave.Trim(); // Elimina espacios accidentales
+
+                    // Verificamos si es un hash de BCrypt válido
+                    // BCrypt suele empezar con $2a$, $2b$ o $2y$
+                    bool esHash = nuevaClave.StartsWith("$2a$") ||
+                                  nuevaClave.StartsWith("$2b$") ||
+                                  nuevaClave.StartsWith("$2y$");
+
+                    if (!esHash)
+                    {
+                        // Solo encriptamos si es texto plano real
+                        usuarioDb.Clave = BCrypt.Net.BCrypt.HashPassword(nuevaClave);
+                    }
+                    // Si es un hash, no hacemos nada (mantenemos el valor que ya tenía el usuarioDb)
+                }
+
+                // 3. Actualizamos el Detalle del Cliente
+                if (usuarioDb.Cliente?.DetalleCliente != null && modelo.Cliente?.DetalleCliente != null)
+                {
+                    var detDb = usuarioDb.Cliente.DetalleCliente;
+                    var detMod = modelo.Cliente.DetalleCliente;
+                    detDb.NumeroCedula = detMod.NumeroCedula;
+                    detDb.NombreApellidos = detMod.NombreApellidos;
+                    detDb.Telefono = detMod.Telefono;
+                    detDb.Direccion = detMod.Direccion;
+                    detDb.NombrePropietario = detMod.NombrePropietario;
+                }
+
+                // 4. Actualizamos TiendaApp y el Crédito específico
+                var creditoMod = modelo.Cliente?.Creditos?.FirstOrDefault();
+                var tiendaAppMod = modelo.Cliente?.TiendaApps?.FirstOrDefault();
+
+                if (creditoMod != null && usuarioDb.Cliente != null)
+                {
+                    var creditoDb = usuarioDb.Cliente.Creditos.FirstOrDefault(c => c.Id == creditoMod.Id);
+
+                    if (creditoDb != null)
+                    {
+                        // Actualizar la relación intermedia TiendaApp
+                        if (tiendaAppMod != null)
+                        {
+                            var tiendaAppDb = usuarioDb.Cliente.TiendaApps
+                                .FirstOrDefault(ta => ta.Id == creditoDb.TiendaAppId);
+
+                            if (tiendaAppDb != null)
+                            {
+                                tiendaAppDb.CedulaEncargado = tiendaAppMod.CedulaEncargado;
+                                tiendaAppDb.EstadoDeComision = tiendaAppMod.EstadoDeComision;
+                            }
+                        }
+
+                        // Actualizar los valores del Crédito
+                        creditoDb.Marca = creditoMod.Marca;
+                        creditoDb.Modelo = creditoMod.Modelo;
+                        creditoDb.IMEI = creditoMod.IMEI;
+                        creditoDb.Capacidad = creditoMod.Capacidad;
+                    }
+                }
+
+                // 5. Un solo SaveChangesAsync() garantiza que todo sea una sola operación en Postgres
+                // Si algo falla aquí, no se guarda nada de lo anterior.
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Loguea el error interno para saber qué campo falló
+                throw new Exception("Error al actualizar en Postgres: " + ex.Message);
+            }
+        }
         public async Task<bool> eliminarUsuario(int id)
         {
             var usuario = await _context.Usuarios

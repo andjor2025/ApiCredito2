@@ -190,6 +190,7 @@ builder.Services.AddScoped<INotificacionRepository, NotificacionRepository>();
 builder.Services.AddSingleton<IRegistroTemporalAdminService, RegistroTemporalAdminService>();
 builder.Services.AddScoped<IUsuarioAdminRepository, UsuarioAdminService>();
 
+
 builder.Services.Configure<SendGridSettings>(
     builder.Configuration.GetSection("SendGrid"));
 
