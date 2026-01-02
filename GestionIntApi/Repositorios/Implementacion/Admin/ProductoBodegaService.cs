@@ -14,12 +14,16 @@ namespace GestionIntApi.Repositorios.Implementacion.Admin
         private readonly IGenericRepository<Producto> _productoRepository;
         private readonly IMapper _mapper;
 
+        private readonly IMovimientoInventarioService _movimientoRepository;
+
         public ProductoBodegaService(
             IGenericRepository<Producto> productoRepository,
-            IMapper mapper)
+            IMovimientoInventarioService movimientoRepository,
+        IMapper mapper)
         {
             _productoRepository = productoRepository;
             _mapper = mapper;
+            _movimientoRepository = movimientoRepository;
         }
 
         // 1. LISTAR PRODUCTOS
@@ -56,7 +60,7 @@ namespace GestionIntApi.Repositorios.Implementacion.Admin
 
                 // 3. IMPORTANTE: Si TiendaActualId viene en 0 desde el DTO, lo ponemos en null
                 // para que no intente buscar una tienda con Id 0 que no existe.
-                if (producto.TiendaActualId == 0) producto.TiendaActualId = null;
+                if (producto.TiendaId == 0) producto.TiendaId = null;
 
                 // 4. Forzamos la fecha de registro
                 producto.FechaRegistro = DateTime.UtcNow;
@@ -66,6 +70,16 @@ namespace GestionIntApi.Repositorios.Implementacion.Admin
 
                 if (creado.Id == 0)
                     throw new Exception("No se pudo insertar el registro.");
+
+                if (creado.TiendaId.HasValue)
+                {
+                    await _movimientoRepository.RegistrarEntrada(
+                        creado.Id,
+                        creado.TiendaId.Value,
+                        "Ingreso automático por registro de producto nuevo",
+                        "Sistema"
+                    );
+                }
 
                 return _mapper.Map<ProductoBodegaDTO>(creado);
             }

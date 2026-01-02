@@ -3,6 +3,7 @@ using System;
 using GestionIntApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GestionIntApi.Migrations
 {
     [DbContext(typeof(SistemaGestionDBcontext))]
-    partial class SistemaGestionDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20260102054506_tienda")]
+    partial class tienda
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,7 +290,7 @@ namespace GestionIntApi.Migrations
 
                     b.HasIndex("TiendaOrigenId");
 
-                    b.ToTable("MovimientosInventario");
+                    b.ToTable("MovimientoInventario");
                 });
 
             modelBuilder.Entity("GestionIntApi.Models.Admin.Producto", b =>
@@ -349,7 +352,7 @@ namespace GestionIntApi.Migrations
 
                     b.HasIndex("TiendaId");
 
-                    b.ToTable("Productos");
+                    b.ToTable("Producto");
                 });
 
             modelBuilder.Entity("GestionIntApi.Models.Admin.RolAdmin", b =>
@@ -413,12 +416,6 @@ namespace GestionIntApi.Migrations
 
                     b.Property<string>("NombreApellidos")
                         .HasColumnType("text");
-
-                    b.Property<string>("PasswordResetToken")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("ResetTokenExpires")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("RolAdminId")
                         .HasColumnType("integer");
@@ -1100,7 +1097,7 @@ namespace GestionIntApi.Migrations
             modelBuilder.Entity("GestionIntApi.Models.Admin.MovimientoInventario", b =>
                 {
                     b.HasOne("GestionIntApi.Models.Admin.Producto", "Producto")
-                        .WithMany()
+                        .WithMany("Movimientos")
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1240,6 +1237,11 @@ namespace GestionIntApi.Migrations
             modelBuilder.Entity("GestionIntApi.Models.Admin.MenuAdmin", b =>
                 {
                     b.Navigation("MenuRolAdmins");
+                });
+
+            modelBuilder.Entity("GestionIntApi.Models.Admin.Producto", b =>
+                {
+                    b.Navigation("Movimientos");
                 });
 
             modelBuilder.Entity("GestionIntApi.Models.Admin.RolAdmin", b =>

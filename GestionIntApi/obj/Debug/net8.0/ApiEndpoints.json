@@ -645,6 +645,90 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GestionIntApi.Controllers.Admin.MovimientoInventarioController",
+    "Method": "ObtenerHistorial",
+    "RelativePath": "api/MovimientoInventario/Historial",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productoId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "tiendaId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "fechaInicio",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "fechaFin",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "tipoMovimiento",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.MovimientoInventarioController",
+    "Method": "ObtenerHistorialPorIMEI",
+    "RelativePath": "api/MovimientoInventario/HistorialPorIMEI/{imei}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "imei",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.MovimientoInventarioController",
+    "Method": "RegistrarEntrada",
+    "RelativePath": "api/MovimientoInventario/RegistrarEntrada",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "GestionIntApi.DTO.Admin.EntradaRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.MovimientoInventarioController",
+    "Method": "RegistrarTraslado",
+    "RelativePath": "api/MovimientoInventario/RegistrarTraslado",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "GestionIntApi.DTO.Admin.TrasladoProductoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GestionIntApi.Controllers.NotificacionController",
     "Method": "GetNotificacionesPorCliente",
     "RelativePath": "api/Notificacion/{id}",
@@ -775,8 +859,40 @@
   },
   {
     "ContainingType": "GestionIntApi.Controllers.PasswordController",
+    "Method": "ForgotPassword1",
+    "RelativePath": "api/Password/forgot-passwordAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GestionIntApi.DTO.ForgotPasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.PasswordController",
     "Method": "ResetPassword",
     "RelativePath": "api/Password/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GestionIntApi.DTO.ResetPasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.PasswordController",
+    "Method": "ResetPasswordAdmin",
+    "RelativePath": "api/Password/reset-passwordAdmin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1072,6 +1188,48 @@
     ]
   },
   {
+    "ContainingType": "GestionIntApi.Controllers.Admin.TiendaInventarioController",
+    "Method": "ObtenerInventarioTienda",
+    "RelativePath": "api/TiendaInventario/InventarioTienda/{tiendaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tiendaId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.TiendaInventarioController",
+    "Method": "ObtenerProductosTienda",
+    "RelativePath": "api/TiendaInventario/ProductosTienda/{tiendaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tiendaId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.Admin.TiendaInventarioController",
+    "Method": "ObtenerTiendasDisponibles",
+    "RelativePath": "api/TiendaInventario/TiendasDisponibles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GestionIntApi.Controllers.UbicacionController",
     "Method": "DashboardUbicaciones",
     "RelativePath": "api/Ubicacion/DashboardUbicaciones/{usuarioId}",
@@ -1227,6 +1385,22 @@
     "ContainingType": "GestionIntApi.Controllers.UsuarioController",
     "Method": "Guardar",
     "RelativePath": "api/Usuario/Guardar1",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "GestionIntApi.DTO.UsuarioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.UsuarioController",
+    "Method": "Guardar11",
+    "RelativePath": "api/Usuario/Guardar11",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

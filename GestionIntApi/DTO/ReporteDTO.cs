@@ -40,6 +40,7 @@ namespace GestionIntApi.DTO
         public decimal AbonadoTotal { get; set; }
 
         public decimal AbonadoCuota { get; set; }
+        public string EstadoDeComision { get; set; }
 
 
         // ===== FECHAS =====

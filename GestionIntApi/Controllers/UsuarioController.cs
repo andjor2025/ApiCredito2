@@ -131,8 +131,8 @@ namespace GestionIntApi.Controllers
 
 
         [HttpPost]
-                [Route("Guardar")]
-                public async Task<IActionResult> Guardar1([FromBody] UsuarioDTO usuario)
+                [Route("Guardar11")]
+                public async Task<IActionResult> Guardar11([FromBody] UsuarioDTO usuario)
                 {
                     var rsp = new Response<UsuarioDTO>();
                     try
@@ -176,7 +176,61 @@ namespace GestionIntApi.Controllers
                     }
                     return Ok(rsp);
                 }
-        
+
+
+        [HttpPost]
+        [Route("Guardar")]
+        public async Task<IActionResult> Guardar1([FromBody] UsuarioDTO usuario)
+        {
+            var rsp = new Response<UsuarioDTO>();
+            try
+            {
+                // 1. Validar si el correo ya existe en la base de datos
+                var existe = await _UsuarioServicios.ExisteCorreo(usuario.Correo);
+                if (existe)
+                {
+                    rsp.status = false;
+                    rsp.msg = "El correo ya está registrado.";
+                    return BadRequest(rsp);
+                }
+
+                // 2. Generar el código de verificación aleatorio
+                var codigo = new Random().Next(100000, 999999).ToString();
+
+                // 3. INTENTAR ENVIAR EL CORREO PRIMERO
+                // Si el servidor de correos falla, lanzará una excepción y saltará al 'catch'
+                // evitando que los datos se guarden en el registro temporal.
+                await _emailService.SendEmailAsync(
+                    usuario.Correo,
+                    "Código de verificación",
+                    $"<h3>Tu código es: <b>{codigo}</b></h3>"
+                );
+
+                // 4. GUARDAR EN REGISTRO TEMPORAL (Solo si el correo fue exitoso)
+                var datos = new RegistroTemporal
+                {
+                    Usuario = usuario,
+                    Codigo = codigo
+                };
+
+                _registroTemporal.GuardarRegistro(usuario.Correo, datos);
+
+                // 5. Respuesta de éxito
+                rsp.status = true;
+                rsp.msg = "Código enviado. Verifique su correo.";
+            }
+            catch (Exception ex)
+            {
+                // Si algo falló (especialmente el correo), llegamos aquí 
+                // y no se habrá guardado nada en _registroTemporal.
+                rsp.status = false;
+                rsp.msg = "No se pudo procesar la solicitud: " + ex.Message;
+                // Opcional: Loggear el error real para soporte técnico
+            }
+
+            return Ok(rsp);
+        }
+
         [HttpPost]
         [Route("Guardar1")]
         public async Task<IActionResult> Guardar([FromBody] UsuarioDTO usuario)

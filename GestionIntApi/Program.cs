@@ -190,6 +190,10 @@ builder.Services.AddScoped<INotificacionRepository, NotificacionRepository>();
 builder.Services.AddSingleton<IRegistroTemporalAdminService, RegistroTemporalAdminService>();
 builder.Services.AddScoped<IUsuarioAdminRepository, UsuarioAdminService>();
 builder.Services.AddScoped<IProductoBodega, ProductoBodegaService>();
+builder.Services.AddScoped<IMovimientoInventarioService, MovimientoInventarioService>();
+
+// Servicios de Tienda Inventario
+builder.Services.AddScoped<ITiendaInventarioService, TiendaInventarioService>();
 
 
 builder.Services.Configure<SendGridSettings>(

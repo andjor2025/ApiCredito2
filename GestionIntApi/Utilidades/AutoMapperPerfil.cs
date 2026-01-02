@@ -208,11 +208,48 @@ namespace GestionIntApi.Utilidades
 
             // Esto soluciona tu error "Missing type map configuration"
             CreateMap<ProductoBodegaDTO, Producto>()
-                .ForMember(dest => dest.FechaRegistro, opt => opt.Ignore()) // La fecha la maneja la DB o el Service
-                .ForMember(dest => dest.TiendaActual, opt => opt.Ignore())
-                .ForMember(dest => dest.Movimientos, opt => opt.Ignore());
+                .ForMember(dest => dest.FechaRegistro, opt => opt.Ignore()); // La fecha la maneja la DB o el Service
+                                                                             // .ForMember(dest => dest.TiendaId, opt => opt.Ignore())
+                                                                             //.ForMember(dest => dest.Movimientos, opt => opt.Ignore());
+
+
+
+
+
+
+            #region MovimientoInventario
+            CreateMap<MovimientoInventario, MovimientoHistorialDTO>()
+                .ForMember(dest => dest.Codigo, opt => opt.MapFrom(src => src.Producto != null ? src.Producto.Codigo : null))
+                .ForMember(dest => dest.TipoProducto, opt => opt.MapFrom(src => src.Producto != null ? src.Producto.TipoProducto : null))
+                .ForMember(dest => dest.Marca, opt => opt.MapFrom(src => src.Producto != null ? src.Producto.Marca : null))
+                .ForMember(dest => dest.Modelo, opt => opt.MapFrom(src => src.Producto != null ? src.Producto.Modelo : null))
+                .ForMember(dest => dest.IMEI, opt => opt.MapFrom(src => src.Producto != null ? src.Producto.IMEI : null))
+                .ForMember(dest => dest.Serie, opt => opt.MapFrom(src => src.Producto != null ? src.Producto.Serie : null))
+                .ForMember(dest => dest.TiendaOrigen, opt => opt.MapFrom(src => src.TiendaOrigen != null ? src.TiendaOrigen.NombreTienda : null))
+                .ForMember(dest => dest.TiendaDestino, opt => opt.MapFrom(src => src.TiendaDestino != null ? src.TiendaDestino.NombreTienda : null));
+
+            CreateMap<MovimientoHistorialDTO, MovimientoInventario>();
+            #endregion
+
+            #region Tienda
+            CreateMap<Tienda, TiendaDestinoDTO>();
+            CreateMap<TiendaDestinoDTO, Tienda>();
+            #endregion
+
+            #region StockBodega
+            CreateMap<StockBodegaDTO, StockBodegaDTO>();
+            CreateMap<StockPorTipoDTO, StockPorTipoDTO>();
+            #endregion
+
+
+
+
+
+
 
         }
+
+
 
 
 

@@ -353,11 +353,13 @@ namespace GestionIntApi.Repositorios.Implementacion
                         .Where(c => c.Creditos.Any(cr => cr.DiaPago >= fech_Inicio && cr.DiaPago <= fech_Fin))
                         .ToListAsync();
                 }
+               
 
                 // Mapeo manual a ReporteDTO
                 listaResultado = clientes
                     .SelectMany(cliente => cliente.Creditos.Select(credito => new ReporteDTO
                     {
+                        
                         CodigoUnico = $"CRE-{credito.FechaCreacion.Year}-{credito.Id:D5}",
                         // CLIENTE
                         ClienteId = cliente.Id,
@@ -372,6 +374,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                         NombreTienda = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.NombreTienda,
                         EncargadoTienda = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.NombreEncargado,
                         TelefonoTienda = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.Telefono,
+                        EstadoDeComision = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.EstadoDeComision,
 
                         // CRÉDITO
                         // CRÉDITO

@@ -42,6 +42,8 @@ namespace GestionIntApi.Models
         public DbSet<RolAdmin> RolesAdmin { get; set; }
         public DbSet<MenuAdmin> MenusAdmin { get; set; }
         public DbSet<MenuRolAdmin> MenuRolAdmin { get; set; }
+        public DbSet<MovimientoInventario> MovimientosInventario { get; set; }
+        public DbSet<Producto> Productos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -41,8 +41,8 @@ namespace GestionIntApi.Models.Admin
         public string Estado { get; set; } // Disponible, Vendido, Dañado, En Reparación
 
         // 🔥 Ubicación actual (se actualiza automáticamente con movimientos)
-        public int? TiendaActualId { get; set; }
-        public Tienda? TiendaActual { get; set; }
+        public int? TiendaId { get; set; }
+        public Tienda? Tienda { get; set; }
 
         public decimal PrecioCompra { get; set; }
         public decimal? PrecioVenta { get; set; }
@@ -53,6 +53,7 @@ namespace GestionIntApi.Models.Admin
         public DateTime FechaRegistro { get; set; } = DateTime.Now;
 
         // Navegación a movimientos
-        public ICollection<MovimientoInventario> Movimientos { get; set; } = new List<MovimientoInventario>();
+      //  public ICollection<MovimientoInventario> Movimientos { get; set; } = new List<MovimientoInventario>();
+
     }
 }

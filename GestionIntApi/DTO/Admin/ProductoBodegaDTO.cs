@@ -5,6 +5,7 @@
 
 
         public int Id { get; set; }
+        public int? TiendaId { get; set; }
         public string TipoProducto { get; set; }
 
         public string Codigo { get; set; }

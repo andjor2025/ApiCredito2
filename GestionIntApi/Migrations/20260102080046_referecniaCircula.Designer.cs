@@ -3,6 +3,7 @@ using System;
 using GestionIntApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GestionIntApi.Migrations
 {
     [DbContext(typeof(SistemaGestionDBcontext))]
-    partial class SistemaGestionDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20260102080046_referecniaCircula")]
+    partial class referecniaCircula
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,53 +246,6 @@ namespace GestionIntApi.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GestionIntApi.Models.Admin.MovimientoInventario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("FechaMovimiento")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<decimal?>("MontoVenta")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("Observacion")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
-
-                    b.Property<int>("ProductoId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("TiendaDestinoId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("TiendaOrigenId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("TipoMovimiento")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
-                    b.Property<string>("UsuarioRegistro")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductoId");
-
-                    b.HasIndex("TiendaDestinoId");
-
-                    b.HasIndex("TiendaOrigenId");
-
-                    b.ToTable("MovimientosInventario");
-                });
-
             modelBuilder.Entity("GestionIntApi.Models.Admin.Producto", b =>
                 {
                     b.Property<int>("Id")
@@ -349,7 +305,7 @@ namespace GestionIntApi.Migrations
 
                     b.HasIndex("TiendaId");
 
-                    b.ToTable("Productos");
+                    b.ToTable("Producto");
                 });
 
             modelBuilder.Entity("GestionIntApi.Models.Admin.RolAdmin", b =>
@@ -413,12 +369,6 @@ namespace GestionIntApi.Migrations
 
                     b.Property<string>("NombreApellidos")
                         .HasColumnType("text");
-
-                    b.Property<string>("PasswordResetToken")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("ResetTokenExpires")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("RolAdminId")
                         .HasColumnType("integer");
@@ -1095,29 +1045,6 @@ namespace GestionIntApi.Migrations
                     b.Navigation("MenuAdmin");
 
                     b.Navigation("RolAdmin");
-                });
-
-            modelBuilder.Entity("GestionIntApi.Models.Admin.MovimientoInventario", b =>
-                {
-                    b.HasOne("GestionIntApi.Models.Admin.Producto", "Producto")
-                        .WithMany()
-                        .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GestionIntApi.Models.Tienda", "TiendaDestino")
-                        .WithMany()
-                        .HasForeignKey("TiendaDestinoId");
-
-                    b.HasOne("GestionIntApi.Models.Tienda", "TiendaOrigen")
-                        .WithMany()
-                        .HasForeignKey("TiendaOrigenId");
-
-                    b.Navigation("Producto");
-
-                    b.Navigation("TiendaDestino");
-
-                    b.Navigation("TiendaOrigen");
                 });
 
             modelBuilder.Entity("GestionIntApi.Models.Admin.Producto", b =>
