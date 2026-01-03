@@ -67,14 +67,14 @@ namespace GestionIntApi.Controllers
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO dto)
         {
-            string cleanToken = dto.Token?.Trim();
+            string codigoLimpio = dto.Token?.Trim();
 
             // 2. Obtener la hora actual en UTC de forma precisa
             DateTime ahoraUtc = DateTime.UtcNow;
 
-            var usuario = await _db.UsuariosAdmin
+            var usuario = await _db.Usuarios
                 .FirstOrDefaultAsync(u =>
-                    u.PasswordResetToken == dto.Token &&
+                    u.PasswordResetToken == codigoLimpio &&
                     u.ResetTokenExpires > DateTime.UtcNow);
 
             if (usuario == null)
@@ -91,7 +91,6 @@ namespace GestionIntApi.Controllers
 
             return Ok("Contraseña actualizada correctamente.");
         }
-
 
         [HttpPost("forgot-passwordAdmin")]
         public async Task<IActionResult> ForgotPassword1([FromBody] ForgotPasswordDTO dto)
