@@ -101,7 +101,7 @@ namespace GestionIntApi.Models
             // 4. Seed RolAdmin (Panel Web)
             modelBuilder.Entity<RolAdmin>().HasData(
                 new RolAdmin { Id = 1, Descripcion = "Administrador", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) },
-                new RolAdmin { Id = 2, Descripcion = "Cliente", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) },
+                //new RolAdmin { Id = 2, Descripcion = "Cliente", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) },
                 new RolAdmin { Id = 3, Descripcion = "Cajera", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) }
             );
 

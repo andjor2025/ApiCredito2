@@ -379,10 +379,12 @@ namespace GestionIntApi.Repositorios.Implementacion
                         // CRÉDITO
                         // CRÉDITO
                         CreditoId = credito.Id,
+                        NombrePropietario=credito.NombrePropietario,
                         Entrada = credito.Entrada,
                         Marca = credito.Marca,
 
                         Modelo = credito.Modelo,
+                        Capacidad = credito.Capacidad,
                        
                         MontoTotal = credito.MontoTotal,
                         MontoPendiente = credito.MontoPendiente,
