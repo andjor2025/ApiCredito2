@@ -2,11 +2,13 @@
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Spreadsheet;
 using GestionIntApi.DTO;
+using GestionIntApi.DTO.Admin;
 using GestionIntApi.Models;
 using GestionIntApi.Repositorios.Contrato;
 using GestionIntApi.Repositorios.Interfaces;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestionIntApi.Repositorios.Implementacion
 {
@@ -750,6 +752,7 @@ namespace GestionIntApi.Repositorios.Implementacion
     decimal TOLERANCIA = 0.60m;
             decimal saldoRestante = credito.MontoTotal - credito.Entrada;
 
+
             // 1️⃣ Registrar entrada
             historial.Add(new HistoriaAppDTO
             {
@@ -760,7 +763,8 @@ namespace GestionIntApi.Repositorios.Implementacion
                 ProximaCuotaStr = credito.FechaCreacion.ToString("yyyy-MM-dd"),
                 AbonadoCuota = credito.Entrada,
                 MontoPendiente = Math.Round(saldoRestante, 2),
-                EstadoCuota = "Pagado"
+                EstadoCuota = "Pagado",
+               
             });
 
             decimal valorCuota = credito.ValorPorCuota;
@@ -779,10 +783,18 @@ namespace GestionIntApi.Repositorios.Implementacion
             {
                 // Determinar estado del pago
                 string estado;
+               
                 if (pagoRestante >= (valorCuota - TOLERANCIA))
                 {
                     estado = "Pagado";
                     pagoRestante -= valorCuota;
+
+
+                    // Si la cuota está pagada, buscamos el siguiente pago en la lista de la BD
+                   
+
+
+
                 }
                 else if (pagoRestante > 0)
                 {
@@ -841,6 +853,31 @@ namespace GestionIntApi.Repositorios.Implementacion
             return historial;
         }
 
+
+
+
+        public async Task<List<PagoRealizadoDTO>> ListarPagosPorCredito(int creditoId)
+        {
+            var pagos = await _context.RegistrosPagos
+                .Include(p => p.Credito)
+                    .ThenInclude(c => c.Cliente)
+                        .ThenInclude(d => d.DetalleCliente) // <--- FALTA ESTA LÍNEA
+                .Where(p => p.CreditoId == creditoId)
+                .OrderByDescending(p => p.FechaPago)
+                .ToListAsync();
+
+            return pagos.Select(p => new PagoRealizadoDTO
+            {
+                Id = p.Id,
+                CreditoId = p.CreditoId,
+                MontoPagado = p.MontoPagado,
+                MetodoPago = p.MetodoPago ?? "Efectivo",
+                FechaPago = p.FechaPago,
+                FechaPagoStr = p.FechaPago.ToString("dd/MM/yyyy HH:mm"),
+                // Protege toda la cadena con el operador "?"
+                NombreCliente = p.Credito?.Cliente?.DetalleCliente?.NombreApellidos ?? "N/A"
+            }).ToList();
+        }
         // 🔥 MÉTODO AUXILIAR (agrega este método en tu clase)
         private DateTime CalcularProximaFecha(DateTime fechaActual, string frecuencia, int diaOriginal)
         {

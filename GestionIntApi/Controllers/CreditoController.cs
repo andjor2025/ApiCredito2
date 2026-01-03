@@ -363,5 +363,20 @@ namespace GestionIntApi.Controllers
             return Ok(data);
         }
 
+
+        [HttpGet("historial-pagos/{creditoId}")]
+        public async Task<IActionResult> GetHistorialPagos(int creditoId)
+        {
+            try
+            {
+                var historial = await _CreditoServicios.ListarPagosPorCredito(creditoId);
+                return Ok(new { status = true, value = historial });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { status = false, msg = ex.Message });
+            }
+        }
+
     }
 }

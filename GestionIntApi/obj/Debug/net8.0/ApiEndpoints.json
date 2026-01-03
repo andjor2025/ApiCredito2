@@ -258,6 +258,22 @@
   },
   {
     "ContainingType": "GestionIntApi.Controllers.CreditoController",
+    "Method": "GetHistorialPagos",
+    "RelativePath": "api/Credito/historial-pagos/{creditoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "creditoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.CreditoController",
     "Method": "Lista",
     "RelativePath": "api/Credito/Lista",
     "HttpMethod": "GET",

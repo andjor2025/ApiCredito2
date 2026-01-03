@@ -7,6 +7,7 @@
         public string ProximaCuotaStr { get; set; }
         public decimal MontoPendiente { get; set; }
         public decimal AbonadoCuota { get; set; }
+     
         public string EstadoCuota { get; set; }
         public int ClienteId { get; set; }
         public int? TiendaId { get; set; }
