@@ -23,6 +23,7 @@ namespace GestionIntApi.DTO
         // ===== CRÉDITO =====
         public int CreditoId { get; set; }
         public string NombrePropietario { get; set; }
+        public string Imai { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string FotoContrato { get; set; }

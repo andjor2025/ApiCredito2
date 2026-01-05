@@ -380,6 +380,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                         // CRÉDITO
                         CreditoId = credito.Id,
                         NombrePropietario=credito.NombrePropietario,
+                        Imai = credito.IMEI,
                         Entrada = credito.Entrada,
                         Marca = credito.Marca,
 
