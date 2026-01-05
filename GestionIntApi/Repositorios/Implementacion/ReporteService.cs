@@ -60,6 +60,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             // CRÉDITO
             ws.Cell(1, col++).Value = "Crédito Id";
             ws.Cell(1, col++).Value = "Propietario de credito";
+            ws.Cell(1, col++).Value = "IMEI";
             ws.Cell(1, col++).Value = "Entrada";
             ws.Cell(1, col++).Value = "Marca";
             ws.Cell(1, col++).Value = "Modelo";
@@ -103,6 +104,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                 // CRÉDITO
                 ws.Cell(fila, col++).Value = r.CreditoId;
                 ws.Cell(fila, col++).Value = r.NombrePropietario;
+                ws.Cell(fila, col++).Value = r.Imai;
                 ws.Cell(fila, col++).Value = r.Entrada;
                 ws.Cell(fila, col++).Value = r.Marca;
                 ws.Cell(fila, col++).Value = r.Modelo;
