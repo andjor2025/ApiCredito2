@@ -55,6 +55,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             ws.Cell(1, col++).Value = "Nombre Tienda";
             ws.Cell(1, col++).Value = "Encargado Tienda";
             ws.Cell(1, col++).Value = "Teléfono Tienda";
+            ws.Cell(1, col++).Value = "Dirección de la tienda";
             ws.Cell(1, col++).Value = "Estado de Comisiòn";
 
             // CRÉDITO
@@ -99,6 +100,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                 ws.Cell(fila, col++).Value = r.NombreTienda;
                 ws.Cell(fila, col++).Value = r.EncargadoTienda;
                 ws.Cell(fila, col++).Value = r.TelefonoTienda;
+                ws.Cell(fila, col++).Value = r.Direccion;
                 ws.Cell(fila, col++).Value = r.EstadoDeComision;
 
                 // CRÉDITO

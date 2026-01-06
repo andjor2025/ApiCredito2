@@ -107,6 +107,7 @@ namespace GestionIntApi.Repositorios.Implementacion.Admin
               //  productoParaEditar.Codigo = modelo.Codigo;
                 productoParaEditar.Marca = modelo.Marca;
                 productoParaEditar.Modelo = modelo.Modelo;
+                productoParaEditar.PropietarioDelProducto=modelo.PropietarioDelProducto;
                 productoParaEditar.IMEI = modelo.IMEI;
                 productoParaEditar.IMEI2 = modelo.IMEI2;
                 productoParaEditar.Serie = modelo.Serie;
@@ -114,6 +115,7 @@ namespace GestionIntApi.Repositorios.Implementacion.Admin
                 productoParaEditar.Tamano = modelo.Tamano;
                 productoParaEditar.Estado = modelo.Estado;
                 productoParaEditar.PrecioCompra = modelo.PrecioCompra;
+                productoParaEditar.Observaciones = modelo.Observaciones;    
                 productoParaEditar.PrecioVentaContado = modelo.PrecioVentaContado;
                 productoParaEditar.PrecioVentaCredito = modelo.PrecioVentaCredito;
 

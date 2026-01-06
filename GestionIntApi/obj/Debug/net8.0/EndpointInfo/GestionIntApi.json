@@ -3176,6 +3176,10 @@
             "format": "double",
             "nullable": true
           },
+          "propietarioDelProducto": {
+            "type": "string",
+            "nullable": true
+          },
           "imeI2": {
             "type": "string",
             "nullable": true

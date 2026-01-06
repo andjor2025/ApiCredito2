@@ -69,6 +69,7 @@ namespace GestionIntApi.Repositorios.Interfaces.Admin
             {
                 Id = p.Id,
                 TipoProducto = p.TipoProducto,
+                PropietarioDelProducto = p.PropietarioDelProducto,
                 Codigo = p.Codigo,
                 Marca = p.Marca,
                 Modelo = p.Modelo,

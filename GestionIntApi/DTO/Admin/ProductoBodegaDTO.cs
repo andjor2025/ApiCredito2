@@ -11,12 +11,14 @@
 
         public decimal? PrecioVentaCredito { get; set; }
         public decimal? PrecioVentaContado { get; set; }
+        public string? PropietarioDelProducto { get; set; }
         public string? IMEI2 { get; set; }
         public string? Observaciones { get; set; }
         public string Codigo { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string? IMEI { get; set; }
+     
         public string? Serie { get; set; }
         public string? Color { get; set; }
         public string? Tamano { get; set; }
