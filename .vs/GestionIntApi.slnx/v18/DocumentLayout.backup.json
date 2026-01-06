@@ -3,72 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\repositorios\\implementacion\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\repositorios\\implementacion\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\models\\credito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\models\\credito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\reportedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\reportedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\repositorios\\implementacion\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\repositorios\\implementacion\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\repositorios\\implementacion\\creditoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\repositorios\\implementacion\\creditoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Migrations\\20260106064305_credito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GestionIntApi\\Migrations\\20260106064305_credito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\creditodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\creditodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\controllers\\creditocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\controllers\\creditocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\models\\sistemagestiondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\models\\sistemagestiondbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\controllers\\admin\\usuarioadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\controllers\\admin\\usuarioadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\repositorios\\implementacion\\reporteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\repositorios\\implementacion\\reporteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\models\\admin\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\models\\admin\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\utilidades\\automapperperfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\utilidades\\automapperperfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\admin\\pagorealizadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\admin\\pagorealizadodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\admin\\productobodegadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\admin\\productobodegadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\repositorios\\interfaces\\icreditoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\repositorios\\interfaces\\icreditoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\historiaappdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\historiaappdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\models\\registrarpago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -83,10 +35,6 @@
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\tiendaappdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\tiendaappdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\tiendadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\tiendadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -95,16 +43,8 @@
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\controllers\\admin\\tiendainventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\controllers\\admin\\productobodegacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\controllers\\admin\\productobodegacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\models\\admin\\movimientoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\models\\admin\\movimientoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\repositorios\\implementacion\\admin\\movimientoinventarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\repositorios\\implementacion\\admin\\movimientoinventarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\admin\\movimientohistorialdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -113,18 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\repositorios\\implementacion\\registrotemporalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\repositorios\\implementacion\\registrotemporalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\models\\admin\\usuarioadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\models\\admin\\usuarioadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\admin\\usuariocompletodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\dto\\admin\\usuariocompletodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\dto\\admin\\registrotemporaladmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -139,16 +67,8 @@
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\models\\detallecliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\controllers\\emailvalidationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\controllers\\emailvalidationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\migrations\\20260103064600_roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\migrations\\20260103064600_roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|c:\\users\\andjo\\3d objects\\subirapi\\trabajo\\apigestioninterna\\gestionintapi\\migrations\\20260105175643_rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1AF9EC3F-F646-6177-ACE4-A36F8C531D7E}|GestionIntApi\\GestionIntApi.csproj|solutionrelative:gestionintapi\\migrations\\20260105175643_rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -158,11 +78,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 15,
               "Title": "DetalleCliente.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\DetalleCliente.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Models\\DetalleCliente.cs",
@@ -175,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 14,
               "Title": "TiendaService.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\TiendaService.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\TiendaService.cs",
@@ -188,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 12,
               "Title": "RegistroTemporalService.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\RegistroTemporalService.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\RegistroTemporalService.cs",
@@ -201,42 +121,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "UsuarioAdmin.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\Admin\\UsuarioAdmin.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Models\\Admin\\UsuarioAdmin.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\Admin\\UsuarioAdmin.cs",
-              "RelativeToolTip": "GestionIntApi\\Models\\Admin\\UsuarioAdmin.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwA8AAAAkAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "20260106064305_credito.cs",
+              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Migrations\\20260106064305_credito.cs",
+              "RelativeDocumentMoniker": "GestionIntApi\\Migrations\\20260106064305_credito.cs",
+              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Migrations\\20260106064305_credito.cs",
+              "RelativeToolTip": "GestionIntApi\\Migrations\\20260106064305_credito.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBcAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T03:28:51.216Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "EmailValidationController.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\EmailValidationController.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Controllers\\EmailValidationController.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\EmailValidationController.cs",
-              "RelativeToolTip": "GestionIntApi\\Controllers\\EmailValidationController.cs",
-              "ViewState": "AgIAAGsBAAAAAAAAAAAnwH4BAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T09:17:02.029Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "UsuarioCompletoDto.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\UsuarioCompletoDto.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\DTO\\Admin\\UsuarioCompletoDto.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\UsuarioCompletoDto.cs",
-              "RelativeToolTip": "GestionIntApi\\DTO\\Admin\\UsuarioCompletoDto.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBgAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T08:43:52.123Z",
-              "IsPinned": true
+              "WhenOpened": "2026-01-06T06:43:05.785Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -248,152 +142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\UsuarioRepository.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\UsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\UsuarioRepository.cs",
-              "RelativeToolTip": "GestionIntApi\\Repositorios\\Implementacion\\UsuarioRepository.cs",
-              "ViewState": "AgIAAFIBAAAAAAAAAAAAwGwBAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T22:47:40.717Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "20260105175643_rol.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Migrations\\20260105175643_rol.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Migrations\\20260105175643_rol.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Migrations\\20260105175643_rol.cs",
-              "RelativeToolTip": "GestionIntApi\\Migrations\\20260105175643_rol.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA1wCAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T17:56:43.649Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SistemaGestionDBcontext.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\SistemaGestionDBcontext.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Models\\SistemaGestionDBcontext.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\SistemaGestionDBcontext.cs",
-              "RelativeToolTip": "GestionIntApi\\Models\\SistemaGestionDBcontext.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAmwDQAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T17:55:38.946Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UsuarioAdminController.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\Admin\\UsuarioAdminController.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Controllers\\Admin\\UsuarioAdminController.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\Admin\\UsuarioAdminController.cs",
-              "RelativeToolTip": "GestionIntApi\\Controllers\\Admin\\UsuarioAdminController.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAIwDcAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T16:49:58.823Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ClienteController.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\ClienteController.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Controllers\\ClienteController.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\ClienteController.cs",
-              "RelativeToolTip": "GestionIntApi\\Controllers\\ClienteController.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAwwDkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T16:24:58.605Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ClienteService.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\ClienteService.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\ClienteService.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\ClienteService.cs",
-              "RelativeToolTip": "GestionIntApi\\Repositorios\\Implementacion\\ClienteService.cs",
-              "ViewState": "AgIAAG4BAAAAAAAAAAAQwH4BAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T16:18:03.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Producto.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\Admin\\Producto.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Models\\Admin\\Producto.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\Admin\\Producto.cs",
-              "RelativeToolTip": "GestionIntApi\\Models\\Admin\\Producto.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAAABYAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T02:37:51.428Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ProductoBodegaDTO.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\ProductoBodegaDTO.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\DTO\\Admin\\ProductoBodegaDTO.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\ProductoBodegaDTO.cs",
-              "RelativeToolTip": "GestionIntApi\\DTO\\Admin\\ProductoBodegaDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T21:39:49.088Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AutoMapperPerfil.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Utilidades\\AutoMapperPerfil.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Utilidades\\AutoMapperPerfil.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Utilidades\\AutoMapperPerfil.cs",
-              "RelativeToolTip": "GestionIntApi\\Utilidades\\AutoMapperPerfil.cs",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAgwAIBAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T21:32:54.31Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreditoController.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\CreditoController.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Controllers\\CreditoController.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\CreditoController.cs",
-              "RelativeToolTip": "GestionIntApi\\Controllers\\CreditoController.cs",
-              "ViewState": "AgIAAGgBAAAAAAAAAAAiwHMBAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T21:26:15.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ICreditoService.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Interfaces\\ICreditoService.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Interfaces\\ICreditoService.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Interfaces\\ICreditoService.cs",
-              "RelativeToolTip": "GestionIntApi\\Repositorios\\Interfaces\\ICreditoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T21:25:07.297Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PagoRealizadoDTO.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\PagoRealizadoDTO.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\DTO\\Admin\\PagoRealizadoDTO.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\PagoRealizadoDTO.cs",
-              "RelativeToolTip": "GestionIntApi\\DTO\\Admin\\PagoRealizadoDTO.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T21:23:48.417Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 5,
               "Title": "RegistrarPago.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\RegistrarPago.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Models\\RegistrarPago.cs",
@@ -405,31 +154,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "HistoriaAppDTO.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\HistoriaAppDTO.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\DTO\\HistoriaAppDTO.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\HistoriaAppDTO.cs",
-              "RelativeToolTip": "GestionIntApi\\DTO\\HistoriaAppDTO.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T20:36:21.653Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "CreditoService.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\CreditoService.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\CreditoService.cs",
               "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\CreditoService.cs",
               "RelativeToolTip": "GestionIntApi\\Repositorios\\Implementacion\\CreditoService.cs",
-              "ViewState": "AgIAAH8DAAAAAAAAAAAAAEcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAAPoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T20:28:23.91Z"
+              "WhenOpened": "2026-01-03T20:28:23.91Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\appsettings.json",
               "RelativeDocumentMoniker": "GestionIntApi\\appsettings.json",
@@ -441,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 6,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\EmailService.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\EmailService.cs",
@@ -453,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 13,
               "Title": "RegistroTemporalAdmin.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\RegistroTemporalAdmin.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\DTO\\Admin\\RegistroTemporalAdmin.cs",
@@ -465,31 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "GestionIntApi\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAiwOcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-27T20:49:50.011Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "TiendaAppDTO.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\TiendaAppDTO.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\DTO\\TiendaAppDTO.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\TiendaAppDTO.cs",
-              "RelativeToolTip": "GestionIntApi\\DTO\\TiendaAppDTO.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAgwAkAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:57:14.136Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 8,
               "Title": "TiendaDTO.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\TiendaDTO.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\DTO\\TiendaDTO.cs",
@@ -501,55 +215,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
               "Title": "ReporteService.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\ReporteService.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\ReporteService.cs",
               "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\ReporteService.cs",
               "RelativeToolTip": "GestionIntApi\\Repositorios\\Implementacion\\ReporteService.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAAADkAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAAAD4AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:22:11.735Z"
+              "WhenOpened": "2026-01-03T07:22:11.735Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "CreditoDTO.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\CreditoDTO.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\DTO\\CreditoDTO.cs",
               "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\CreditoDTO.cs",
               "RelativeToolTip": "GestionIntApi\\DTO\\CreditoDTO.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA0wA0AAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:21:37.217Z"
+              "WhenOpened": "2026-01-03T07:21:37.217Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Credito.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\Credito.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Models\\Credito.cs",
               "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\Credito.cs",
               "RelativeToolTip": "GestionIntApi\\Models\\Credito.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAYwCYAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:21:21.073Z"
+              "WhenOpened": "2026-01-03T07:21:21.073Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReporteDTO.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\ReporteDTO.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\DTO\\ReporteDTO.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\ReporteDTO.cs",
-              "RelativeToolTip": "GestionIntApi\\DTO\\ReporteDTO.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAYwBkAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:20:57.301Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 16,
               "Title": "20260103064600_roles.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Migrations\\20260103064600_roles.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Migrations\\20260103064600_roles.cs",
@@ -561,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 9,
               "Title": "TiendaInventarioController.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\Admin\\TiendaInventarioController.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Controllers\\Admin\\TiendaInventarioController.cs",
@@ -573,19 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ProductoBodegaController.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\Admin\\ProductoBodegaController.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Controllers\\Admin\\ProductoBodegaController.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Controllers\\Admin\\ProductoBodegaController.cs",
-              "RelativeToolTip": "GestionIntApi\\Controllers\\Admin\\ProductoBodegaController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:36:58.66Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 10,
               "Title": "MovimientoInventario.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Models\\Admin\\MovimientoInventario.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\Models\\Admin\\MovimientoInventario.cs",
@@ -597,19 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "MovimientoInventarioService.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\Admin\\MovimientoInventarioService.cs",
-              "RelativeDocumentMoniker": "GestionIntApi\\Repositorios\\Implementacion\\Admin\\MovimientoInventarioService.cs",
-              "ToolTip": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\Repositorios\\Implementacion\\Admin\\MovimientoInventarioService.cs",
-              "RelativeToolTip": "GestionIntApi\\Repositorios\\Implementacion\\Admin\\MovimientoInventarioService.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAIwGYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T18:31:52.045Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 11,
               "Title": "MovimientoHistorialDTO.cs",
               "DocumentMoniker": "C:\\Users\\andjo\\3D Objects\\subirapi\\TRABAJO\\apiGestionInterna\\GestionIntApi\\DTO\\Admin\\MovimientoHistorialDTO.cs",
               "RelativeDocumentMoniker": "GestionIntApi\\DTO\\Admin\\MovimientoHistorialDTO.cs",

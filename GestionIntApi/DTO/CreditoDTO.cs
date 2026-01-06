@@ -6,6 +6,9 @@ namespace GestionIntApi.DTO
     {
 
         public int Id { get; set; }
+        public bool? EsVentaContado { get; set; }
+
+
 
         [Required(ErrorMessage = "La entrada es obligatoria")]
         [Range(0, double.MaxValue, ErrorMessage = "La entrada debe ser un número positivo")]

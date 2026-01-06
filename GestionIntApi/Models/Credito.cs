@@ -6,6 +6,10 @@
         public int Id { get; set; }
 
 
+        public bool? EsVentaContado { get; set; }
+
+    
+
         // Valor total del celular
         public decimal MontoTotal { get; set; }
         public string? NombrePropietario { get; set; }

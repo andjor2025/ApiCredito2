@@ -2827,6 +2827,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "esVentaContado": {
+            "type": "boolean",
+            "nullable": true
+          },
           "entrada": {
             "minimum": 0,
             "type": "number",

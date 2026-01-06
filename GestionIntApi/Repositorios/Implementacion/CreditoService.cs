@@ -79,6 +79,8 @@ namespace GestionIntApi.Repositorios.Implementacion
      _ => throw new Exception("Frecuencia de pago inválida")
  };*/
 
+
+
         public async Task<CreditoDTO> CreateCredito(CreditoDTO modelo)
         {
             try
@@ -92,12 +94,22 @@ namespace GestionIntApi.Repositorios.Implementacion
                     c => c.ClienteId == modelo.ClienteId && c.MontoPendiente > 0
                 );
 
-             //   if (creditoActual != null)
-               // {
-                 //   throw new Exception("El cliente aún tiene un crédito activo pendiente. Debe saldarlo antes de crear uno nuevo.");
-               // }
+                //   if (creditoActual != null)
+                // {
+                //   throw new Exception("El cliente aún tiene un crédito activo pendiente. Debe saldarlo antes de crear uno nuevo.");
+                // }
 
+                // ==========================================
+                // 🔥 NUEVA LÓGICA: PAGO AL CONTADO
+                // ==========================================
+                bool esAlContado = modelo.MetodoPago?.ToLower() == "al contado";
 
+                if (esAlContado)
+                {
+                    modelo.Entrada = modelo.MontoTotal; // La entrada es el 100%
+                    modelo.PlazoCuotas = 1;             // Se registra como 1 sola cuota
+                    modelo.FrecuenciaPago = "Unico";
+                }
 
 
                 // Validaciones básicas
@@ -122,91 +134,128 @@ namespace GestionIntApi.Repositorios.Implementacion
 
 
 
-                int totalCuotas = modelo.PlazoCuotas;
 
-                // =============================
-                // 5. VALOR POR CUOTA REAL
-                // =============================
-
-                // 4️⃣ Valor por cuota BASE (NO PROBLEMA)
-                decimal valorBase = Math.Floor(
-                    (modelo.MontoPendiente / totalCuotas) * 100
-                ) / 100;
-
-                //modelo.ValorPorCuota = valorBase;
-                //modelo.ValorPorCuota = valorBase > 0 ? valorBase : modelo.MontoPendiente;
-                 modelo.ValorPorCuota = Math.Round(
-                   modelo.MontoPendiente / totalCuotas, 2
-                );
-                // Cálculo de ValorPorCuota
-                //  modelo.ValorPorCuota = modelo.MontoPendiente / modelo.PlazoCuotas;
-
-
-                // 🔥 NUEVO: Guardar día original para pagos mensuales
-                int diaOriginal = modelo.DiaPago.Day;
-                // Cálculo de PróximaCuota según frecuencia
-                /*   modelo.ProximaCuota = modelo.FrecuenciaPago.ToLower() switch
-                  {
-                     "semanal" => modelo.DiaPago.AddDays(7),
-                      "quincenal" => modelo.DiaPago.AddDays(15),
-                      "mensual" => modelo.DiaPago.AddMonths(1),
-                      _ => modelo.DiaPago
-                 
-
-
-
-
-
-            } */;
-
-                // 🔥 ACTUALIZADO: Cálculo de PróximaCuota según frecuencia
-                switch (modelo.FrecuenciaPago.ToLower())
+                // 3. Si es al contado, forzamos valores de crédito finalizado
+                if (esAlContado || modelo.MontoPendiente <= 0)
                 {
-                    case "semanal":
-                        modelo.ProximaCuota = modelo.DiaPago.AddDays(7);
-                        break;
-                    case "quincenal":
-                        modelo.ProximaCuota = modelo.DiaPago.AddDays(15);
-                        break;
-                    case "mensual":
-                        // 🔥 NUEVO: Manejo correcto de fechas mensuales
-                        var nuevaFecha = modelo.DiaPago.AddMonths(1);
-                        int ultimoDia = DateTime.DaysInMonth(nuevaFecha.Year, nuevaFecha.Month);
-                        int diaFinal = Math.Min(diaOriginal, ultimoDia);
-                        modelo.ProximaCuota = new DateTime(
-                            nuevaFecha.Year,
-                            nuevaFecha.Month,
-                            diaFinal,
-                            modelo.DiaPago.Hour,
-                            modelo.DiaPago.Minute,
-                            modelo.DiaPago.Second,
-                            DateTimeKind.Utc
-                        );
-                        break;
-                    default:
-                        modelo.ProximaCuota = modelo.DiaPago;
-                        break;
+                    modelo.MontoPendiente = 0;
+                    modelo.ValorPorCuota = 0;
+                    modelo.AbonadoTotal = modelo.MontoTotal;
+                    modelo.AbonadoCuota = 0;
+                    modelo.Estado = "Pagado";
+                    modelo.EstadoCuota = "Pagada";
+                    modelo.ProximaCuota = DateTime.UtcNow; // Fecha de hoy como cierre
+                }
+                else
+                {
+
+
+                    int totalCuotas = modelo.PlazoCuotas;
+
+                    // =============================
+                    // 5. VALOR POR CUOTA REAL
+                    // =============================
+
+                    // 4️⃣ Valor por cuota BASE (NO PROBLEMA)
+                    decimal valorBase = Math.Floor(
+                        (modelo.MontoPendiente / totalCuotas) * 100
+                    ) / 100;
+
+                    //modelo.ValorPorCuota = valorBase;
+                    //modelo.ValorPorCuota = valorBase > 0 ? valorBase : modelo.MontoPendiente;
+                    modelo.ValorPorCuota = Math.Round(
+                      modelo.MontoPendiente / totalCuotas, 2
+                   );
+                    // Cálculo de ValorPorCuota
+                    //  modelo.ValorPorCuota = modelo.MontoPendiente / modelo.PlazoCuotas;
+
+
+                    // 🔥 NUEVO: Guardar día original para pagos mensuales
+                    int diaOriginal = modelo.DiaPago.Day;
+                    // Cálculo de PróximaCuota según frecuencia
+                    /*   modelo.ProximaCuota = modelo.FrecuenciaPago.ToLower() switch
+                      {
+                         "semanal" => modelo.DiaPago.AddDays(7),
+                          "quincenal" => modelo.DiaPago.AddDays(15),
+                          "mensual" => modelo.DiaPago.AddMonths(1),
+                          _ => modelo.DiaPago
+
+
+
+
+
+
+                } */
+                    ;
+
+                    // 🔥 ACTUALIZADO: Cálculo de PróximaCuota según frecuencia
+                    switch (modelo.FrecuenciaPago.ToLower())
+                    {
+                        case "semanal":
+                            modelo.ProximaCuota = modelo.DiaPago.AddDays(7);
+                            break;
+                        case "quincenal":
+                            modelo.ProximaCuota = modelo.DiaPago.AddDays(15);
+                            break;
+                        case "mensual":
+                            // 🔥 NUEVO: Manejo correcto de fechas mensuales
+                            var nuevaFecha = modelo.DiaPago.AddMonths(1);
+                            int ultimoDia = DateTime.DaysInMonth(nuevaFecha.Year, nuevaFecha.Month);
+                            int diaFinal = Math.Min(diaOriginal, ultimoDia);
+                            modelo.ProximaCuota = new DateTime(
+                                nuevaFecha.Year,
+                                nuevaFecha.Month,
+                                diaFinal,
+                                modelo.DiaPago.Hour,
+                                modelo.DiaPago.Minute,
+                                modelo.DiaPago.Second,
+                                DateTimeKind.Utc
+                            );
+                            break;
+                        default:
+                            modelo.ProximaCuota = modelo.DiaPago;
+                            break;
+                    }
+
+
+
+
+
+                    // =============================
+                    // 6. Inicializar propiedades de pagos
+                    // =============================
+                    // =============================
+
+                    modelo.AbonadoCuota = 0;        // cuota actual
+                    modelo.AbonadoTotal = modelo.Entrada;   // total del crédito
+                    modelo.EstadoCuota = "Pendiente";
+                    // =============================
+                    // 5. Actualizar estado
+                    // =============================
+                    modelo.Estado = modelo.MontoPendiente <= 0 ? "Pagado" : "Pendiente";
+
+                }
+                var UsuarioCreado = await _creditoRepository.Crear(_mapper.Map<Credito>(modelo));
+
+
+
+                // 🔥 OPCIONAL: Registrar el pago inicial en tu tabla de historial de pagos
+                if (modelo.Entrada > 0)
+                {
+                    var registroPago = new RegistrarPago
+                    {
+                        CreditoId = UsuarioCreado.Id,
+                        MontoPagado = modelo.Entrada,
+                        MetodoPago = modelo.MetodoPago ?? "Efectivo",
+                        FechaPago = DateTime.UtcNow
+                    };
+                    _context.RegistrosPagos.Add(registroPago);
+                    await _context.SaveChangesAsync();
                 }
 
 
 
 
-
-                // =============================
-                // 6. Inicializar propiedades de pagos
-                // =============================
-                // =============================
-
-                modelo.AbonadoCuota = 0;        // cuota actual
-                modelo.AbonadoTotal = modelo.Entrada;   // total del crédito
-                modelo.EstadoCuota = "Pendiente";
-                // =============================
-                // 5. Actualizar estado
-                // =============================
-                modelo.Estado = modelo.MontoPendiente <= 0 ? "Pagado" : "Pendiente";
-
-
-                var UsuarioCreado = await _creditoRepository.Crear(_mapper.Map<Credito>(modelo));
 
                 if (UsuarioCreado.Id == 0)
                     throw new TaskCanceledException("No se pudo crear la tienda");
@@ -459,6 +508,14 @@ namespace GestionIntApi.Repositorios.Implementacion
                 throw;
             }
         }
+
+
+
+
+
+
+
+
 
         public async Task<bool> DeleteCredito(int id)
         {
