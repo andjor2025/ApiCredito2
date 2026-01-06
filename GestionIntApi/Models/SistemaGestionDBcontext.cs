@@ -102,7 +102,7 @@ namespace GestionIntApi.Models
             modelBuilder.Entity<RolAdmin>().HasData(
                 new RolAdmin { Id = 1, Descripcion = "Administrador", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) },
                 //new RolAdmin { Id = 2, Descripcion = "Cliente", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) },
-                new RolAdmin { Id = 3, Descripcion = "Cajero/a", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) }
+                new RolAdmin { Id = 3, Descripcion = "Team", FechaRegistro = new DateTime(2025, 12, 12, 0, 0, 0, DateTimeKind.Utc) }
             );
 
             // 5. Seed MenuAdmin (Panel Web)
@@ -134,7 +134,7 @@ namespace GestionIntApi.Models
                 new MenuRolAdmin { Id = 10, MenuAdminId = 10, RolAdminId = 1 }, // Reportes
 
                 // PERMISOS PARA LA CAJERA (RolAdminId = 3) - Acceso limitado
-                new MenuRolAdmin { Id = 11, MenuAdminId = 1, RolAdminId = 3 },  // Dashboard
+               // new MenuRolAdmin { Id = 11, MenuAdminId = 1, RolAdminId = 3 },  // Dashboard
                 new MenuRolAdmin { Id = 12, MenuAdminId = 3, RolAdminId = 3 },  // Registro App Móvil
                 new MenuRolAdmin { Id = 13, MenuAdminId = 4, RolAdminId = 3 },  // Pagos
                 new MenuRolAdmin { Id = 14, MenuAdminId = 6, RolAdminId = 3 },  // Registrar Bodega

@@ -15,11 +15,14 @@ namespace GestionIntApi.Models.Admin
         
         public string TipoProducto { get; set; } // Telefono, TV, Tablet, Laptop, etc.
 
+        public string? PropietarioDelProducto { get; set; } 
+
         // 🔥 IDENTIFICADOR ÚNICO (nullable porque no todo tiene IMEI)
         
         public string? IMEI { get; set; } // Solo para teléfonos/tablets
 
-       
+        public string? IMEI2 { get; set; }
+
         public string? Serie { get; set; } // Para TVs, laptops, etc.
 
         [Required]
@@ -45,9 +48,12 @@ namespace GestionIntApi.Models.Admin
         public Tienda? Tienda { get; set; }
 
         public decimal PrecioCompra { get; set; }
-        public decimal? PrecioVenta { get; set; }
+        public decimal? PrecioVentaCredito { get; set; }
+        public decimal? PrecioVentaContado { get; set; }
 
-       
+        public string? Observaciones { get; set; }
+
+
         public string? Descripcion { get; set; } // Detalles adicionales
 
         public DateTime FechaRegistro { get; set; } = DateTime.Now;

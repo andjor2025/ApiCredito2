@@ -3166,6 +3166,24 @@
             "type": "string",
             "nullable": true
           },
+          "precioVentaCredito": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "precioVentaContado": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "imeI2": {
+            "type": "string",
+            "nullable": true
+          },
+          "observaciones": {
+            "type": "string",
+            "nullable": true
+          },
           "codigo": {
             "type": "string",
             "nullable": true
@@ -3255,6 +3273,14 @@
           "cedulaEncargado": {
             "minLength": 1,
             "type": "string"
+          },
+          "comentario": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorComision": {
+            "type": "number",
+            "format": "double"
           },
           "telefono": {
             "type": "string",

@@ -18,8 +18,11 @@ namespace GestionIntApi.DTO
         public string NombreTienda { get; set; }
         public string EncargadoTienda { get; set; }
         public string TelefonoTienda { get; set; }
-       
 
+        public string? Comentario { get; set; }
+
+        public decimal ValorComision { get; set; }
+        public string Direccion { get; set; }
         // ===== CRÉDITO =====
         public int CreditoId { get; set; }
         public string NombrePropietario { get; set; }

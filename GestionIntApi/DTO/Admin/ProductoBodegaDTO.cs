@@ -8,6 +8,11 @@
         public int? TiendaId { get; set; }
         public string TipoProducto { get; set; }
 
+
+        public decimal? PrecioVentaCredito { get; set; }
+        public decimal? PrecioVentaContado { get; set; }
+        public string? IMEI2 { get; set; }
+        public string? Observaciones { get; set; }
         public string Codigo { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }

@@ -79,6 +79,8 @@ namespace GestionIntApi.Repositorios.Implementacion
                 tiendaParaEditar.CedulaEncargado = modelo.CedulaEncargado;
                 tiendaParaEditar.Telefono = modelo.Telefono;
                 tiendaParaEditar.Direccion = modelo.Direccion;
+                tiendaParaEditar.ValorComision = modelo.ValorComision;
+                tiendaParaEditar.Comentario = modelo.Comentario;
                 // La fecha de registro normalmente no se edita, se mantiene la original
 
                 // 3. Ejecutamos la edición en el repositorio

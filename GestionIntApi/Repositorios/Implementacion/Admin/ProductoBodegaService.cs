@@ -108,12 +108,14 @@ namespace GestionIntApi.Repositorios.Implementacion.Admin
                 productoParaEditar.Marca = modelo.Marca;
                 productoParaEditar.Modelo = modelo.Modelo;
                 productoParaEditar.IMEI = modelo.IMEI;
+                productoParaEditar.IMEI2 = modelo.IMEI2;
                 productoParaEditar.Serie = modelo.Serie;
                 productoParaEditar.Color = modelo.Color;
                 productoParaEditar.Tamano = modelo.Tamano;
                 productoParaEditar.Estado = modelo.Estado;
                 productoParaEditar.PrecioCompra = modelo.PrecioCompra;
-                productoParaEditar.PrecioVenta = modelo.PrecioVenta;
+                productoParaEditar.PrecioVentaContado = modelo.PrecioVentaContado;
+                productoParaEditar.PrecioVentaCredito = modelo.PrecioVentaCredito;
 
                 return await _productoRepository.Editar(productoParaEditar);
             }

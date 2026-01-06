@@ -25,6 +25,11 @@ namespace GestionIntApi.DTO
         public string Direccion { get; set; }
 
 
+        public string? Comentario { get; set; }
+
+        public decimal ValorComision { get; set; }
+
+
 
         [Required(ErrorMessage = "El nombre de la tienda es obligatorio")]
         public DateTime FechaRegistro { get; set; }

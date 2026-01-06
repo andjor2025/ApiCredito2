@@ -45,14 +45,14 @@ namespace GestionIntApi.Repositorios.Interfaces.Admin
                 ProductosDisponibles = productos.Count(p => p.Estado == "Disponible"),
                 ProductosEnTransito = productos.Count(p => p.Estado == "En Tránsito"),
                 ProductosDanados = productos.Count(p => p.Estado == "Dañado"),
-                ValorTotal = productos.Sum(p => p.PrecioVenta ?? p.PrecioCompra),
+                ValorTotal = productos.Sum(p => p.PrecioVentaContado ?? p.PrecioCompra),
                 DesglosePorTipo = productos
                     .GroupBy(p => p.TipoProducto)
                     .Select(g => new StockPorTipoDTO
                     {
                         TipoProducto = g.Key,
                         Cantidad = g.Count(),
-                        ValorTotal = g.Sum(p => p.PrecioVenta ?? p.PrecioCompra)
+                        ValorTotal = g.Sum(p => p.PrecioVentaContado ?? p.PrecioCompra)
                     })
                     .ToList()
             };
@@ -73,12 +73,14 @@ namespace GestionIntApi.Repositorios.Interfaces.Admin
                 Marca = p.Marca,
                 Modelo = p.Modelo,
                 IMEI = p.IMEI,
+                IMEI2 = p.IMEI2,
                 Serie = p.Serie,
                 Color = p.Color,
                 Tamano = p.Tamano,
                 Estado = p.Estado,
                 PrecioCompra = p.PrecioCompra,
-                PrecioVenta = p.PrecioVenta,
+                PrecioVentaContado = p.PrecioVentaContado,
+                PrecioVentaCredito = p.PrecioVentaCredito,
                 FechaIngreso = p.FechaRegistro,
                 DiasEnBodega = (DateTime.UtcNow - p.FechaRegistro).Days
             }).ToList();

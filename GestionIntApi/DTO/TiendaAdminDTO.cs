@@ -15,6 +15,11 @@ namespace GestionIntApi.DTO
         [Required]
         public string CedulaEncargado { get; set; }
 
+
+        public string? Comentario { get; set; }
+
+        public decimal ValorComision { get; set; }
+
         public string Telefono { get; set; }
         public string Direccion { get; set; }
 

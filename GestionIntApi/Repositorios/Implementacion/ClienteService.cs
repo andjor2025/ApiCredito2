@@ -375,7 +375,9 @@ namespace GestionIntApi.Repositorios.Implementacion
                         EncargadoTienda = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.NombreEncargado,
                         TelefonoTienda = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.Telefono,
                         EstadoDeComision = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.EstadoDeComision,
-
+                        Direccion = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.Direccion,
+                        ValorComision = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.ValorComision ?? 0m,
+                        Comentario = cliente.TiendaApps?.FirstOrDefault(t => t.Id == credito.TiendaAppId)?.Tienda.Comentario,
                         // CRÉDITO
                         // CRÉDITO
                         CreditoId = credito.Id,

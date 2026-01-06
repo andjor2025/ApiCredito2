@@ -13,6 +13,10 @@ namespace GestionIntApi.Models
         public string CedulaEncargado { get; set; }   // ÚNICA
         public string Telefono { get; set; }
 
+        public string? Comentario { get; set; }
+
+        public decimal ValorComision { get; set; }
+
         public DateTime FechaRegistro { get; set; } = DateTime.Now;
 
         // Navegación
