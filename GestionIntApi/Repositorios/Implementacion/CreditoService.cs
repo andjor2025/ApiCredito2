@@ -913,6 +913,32 @@ namespace GestionIntApi.Repositorios.Implementacion
 
 
 
+        public async Task ActualizarEstadosCuotasAsync()
+        {
+            var creditosPendientes = await _creditoRepository.Consultar(
+                c => c.Estado != "Pagado" && c.MontoPendiente > 0
+            );
+
+            var listaCreditosPendientes = creditosPendientes.ToList();
+
+            foreach (var credito in listaCreditosPendientes)
+            {
+                credito.ProximaCuota = DateTime.SpecifyKind(credito.ProximaCuota, DateTimeKind.Utc);
+
+                if (DateTime.UtcNow.Date > credito.ProximaCuota.Date)
+                {
+                    credito.EstadoCuota = "Atrasada";
+                }
+                else if (credito.MontoPendiente > 0)
+                {
+                    credito.EstadoCuota = "Pendiente";
+                }
+
+                await _creditoRepository.Editar(credito);
+            }
+        }
+
+
         public async Task<List<PagoRealizadoDTO>> ListarPagosPorCredito(int creditoId)
         {
             var pagos = await _context.RegistrosPagos

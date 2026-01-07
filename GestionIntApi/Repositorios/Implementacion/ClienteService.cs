@@ -20,9 +20,11 @@ namespace GestionIntApi.Repositorios.Implementacion
         private readonly IGenericRepository<DetalleCliente> _DetalleRepositorio;
         private readonly IGenericRepository<Cliente> _DetalleApp;
         private readonly IGenericRepository<Credito> _CreditoRepositorio;
+
+        private readonly ICreditoService _CreditoRepository;
         private readonly IGenericRepository<Tienda> _TiendaRepositorio;
         private readonly ICreditoService _CreditoServicio;
-        public ClienteService(IGenericRepository<Cliente> DetalleApp,ICreditoService CreditoServicio,IGenericRepository<DetalleCliente> DetalleRepositorio, IGenericRepository<Tienda> TiendaRepositorio, 
+        public ClienteService(ICreditoService CreditoRepository, IGenericRepository<Cliente> DetalleApp,ICreditoService CreditoServicio,IGenericRepository<DetalleCliente> DetalleRepositorio, IGenericRepository<Tienda> TiendaRepositorio, 
             IGenericRepository<Credito> CreditoRepositorio, IClienteRepository clienteRepository,
             IGenericRepository<Cliente> clienteRepository2, SistemaGestionDBcontext context, IMapper mapper)
         {
@@ -35,6 +37,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             _TiendaRepositorio = TiendaRepositorio;
             _CreditoServicio=CreditoServicio;
             _DetalleApp = DetalleApp;
+            _CreditoRepository=CreditoRepository;
         }
         public async Task<List<ClienteDTO>> GetClientes()
         {
@@ -319,8 +322,13 @@ namespace GestionIntApi.Repositorios.Implementacion
         }
 */
 
+       
         public async Task<List<ReporteDTO>> Reporte(string fechaInicio, string fechaFin)
         {
+
+
+            await _CreditoServicio.ActualizarEstadosCuotasAsync();
+
             IQueryable<Cliente> query = await _clienteRepository2.Consultar();
             var listaResultado = new List<ReporteDTO>();
 

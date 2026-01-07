@@ -19,7 +19,9 @@ namespace GestionIntApi.Repositorios.Interfaces
         Task<List<CreditoMostrarDTO>> GetCreditosClienteApp(int clienteId);
 
         Task<List<HistoriaAppDTO>> GetCalendarioPagos(int creditoId, int clienteId);
-        
+
+        Task ActualizarEstadosCuotasAsync();
+
 
     }
 }

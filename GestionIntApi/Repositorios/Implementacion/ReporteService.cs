@@ -7,10 +7,12 @@ namespace GestionIntApi.Repositorios.Implementacion
     public class ReporteService : IReporteService
     {
         private readonly IClienteService _clienteRepository;
+        private readonly ICreditoService _CreditoServicio;
 
-        public ReporteService(IClienteService clienteRepository)
+        public ReporteService(ICreditoService CreditoServicio, IClienteService clienteRepository)
         {
             _clienteRepository = clienteRepository;
+            _CreditoServicio= CreditoServicio;
         }
 
         // =============================
@@ -19,6 +21,8 @@ namespace GestionIntApi.Repositorios.Implementacion
         public async Task<List<ReporteDTO>> ObtenerReporte(string fechaInicio,
     string fechaFin)
         {
+           
+            await _CreditoServicio.ActualizarEstadosCuotasAsync();
             return await _clienteRepository.Reporte(fechaInicio, fechaFin);
             // ← aquí ya tienes tus joins cliente + tienda + crédito
         }
@@ -57,6 +61,7 @@ namespace GestionIntApi.Repositorios.Implementacion
             ws.Cell(1, col++).Value = "Teléfono Tienda";
             ws.Cell(1, col++).Value = "Dirección de la tienda";
             ws.Cell(1, col++).Value = "Estado de Comisiòn";
+            ws.Cell(1, col++).Value = "Valor de Comisión";
 
             // CRÉDITO
             ws.Cell(1, col++).Value = "Crédito Id";
@@ -102,6 +107,7 @@ namespace GestionIntApi.Repositorios.Implementacion
                 ws.Cell(fila, col++).Value = r.TelefonoTienda;
                 ws.Cell(fila, col++).Value = r.Direccion;
                 ws.Cell(fila, col++).Value = r.EstadoDeComision;
+                ws.Cell(fila, col++).Value = r.ValorComision;
 
                 // CRÉDITO
                 ws.Cell(fila, col++).Value = r.CreditoId;
