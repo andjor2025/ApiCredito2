@@ -130,3 +130,6 @@ C:\Users\andjo\3D Objects\subirapi\TRABAJO\apiGestionInterna\GestionIntApi\bin\D
 C:\Users\andjo\3D Objects\subirapi\TRABAJO\apiGestionInterna\GestionIntApi\bin\Debug\net8.0\RBush.dll
 C:\Users\andjo\3D Objects\subirapi\TRABAJO\apiGestionInterna\GestionIntApi\bin\Debug\net8.0\SixLabors.Fonts.dll
 C:\Users\andjo\3D Objects\subirapi\TRABAJO\apiGestionInterna\GestionIntApi\bin\Debug\net8.0\System.IO.Packaging.dll
+C:\Users\andjo\3D Objects\subirapi\TRABAJO\apiGestionInterna\GestionIntApi\bin\Debug\net8.0\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\andjo\3D Objects\subirapi\TRABAJO\apiGestionInterna\GestionIntApi\bin\Debug\net8.0\Microsoft.Net.Http.Headers.dll
+C:\Users\andjo\3D Objects\subirapi\TRABAJO\apiGestionInterna\GestionIntApi\bin\Debug\net8.0\Resend.dll

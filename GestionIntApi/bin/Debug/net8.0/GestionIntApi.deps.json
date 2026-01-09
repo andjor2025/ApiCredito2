@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore": "8.0.8",
           "Microsoft.EntityFrameworkCore.Design": "8.0.8",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.8",
+          "Resend": "0.2.1",
           "SendGrid": "9.29.3",
           "Swashbuckle.AspNetCore": "8.0.0",
           "System.IdentityModel.Tokens.Jwt": "8.15.0"
@@ -131,6 +132,17 @@
           "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.53112"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.WebUtilities/8.0.20": {
+        "dependencies": {
+          "Microsoft.Net.Http.Headers": "8.0.20"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.WebUtilities.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.2025.42002"
           }
         }
       },
@@ -471,6 +483,14 @@
           }
         }
       },
+      "Microsoft.Net.Http.Headers/8.0.20": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Net.Http.Headers.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.2025.42002"
+          }
+        }
+      },
       "Microsoft.OpenApi/1.6.23": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
@@ -525,6 +545,17 @@
           "lib/net8.0/RBush.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Resend/0.2.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.WebUtilities": "8.0.20"
+        },
+        "runtime": {
+          "lib/net8.0/Resend.dll": {
+            "assemblyVersion": "0.2.1.0",
+            "fileVersion": "0.2.1.0"
           }
         }
       },
@@ -766,6 +797,13 @@
       "path": "microsoft.aspnetcore.openapi/8.0.0",
       "hashPath": "microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.WebUtilities/8.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KuQNopMvYW5ogv7ioAj19x/Wx+Kc6irjmSXuJQBOtNfXE7VGruTnYoFvi2GuxSCrNoJAhotlp5rg76MeOA4tXQ==",
+      "path": "microsoft.aspnetcore.webutilities/8.0.20",
+      "hashPath": "microsoft.aspnetcore.webutilities.8.0.20.nupkg.sha512"
+    },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -878,6 +916,13 @@
       "path": "microsoft.identitymodel.tokens/8.15.0",
       "hashPath": "microsoft.identitymodel.tokens.8.15.0.nupkg.sha512"
     },
+    "Microsoft.Net.Http.Headers/8.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S12GAe3JAvO22Rx8lNE932WzwtzC0zq/2lGs6bgAqova33B+ZrQSKP6pZ4GOqN2+qXMNQOcoPsO4HDQO48KyTg==",
+      "path": "microsoft.net.http.headers/8.0.20",
+      "hashPath": "microsoft.net.http.headers.8.0.20.nupkg.sha512"
+    },
     "Microsoft.OpenApi/1.6.23": {
       "type": "package",
       "serviceable": true,
@@ -919,6 +964,13 @@
       "sha512": "sha512-aP5KQxL5RnFNGW1f0euYVBfCatkLw5iEzMRJcXKq8LWWP4Cp3+qoSq1tDDL2vvJ2rM0ychmVMa2VaEKLS6uX4w==",
       "path": "rbush.signed/4.0.0",
       "hashPath": "rbush.signed.4.0.0.nupkg.sha512"
+    },
+    "Resend/0.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KE+irutvTpJsXUDSnYVlNVZuQb/MGrYGZ6IKVZ3FusRz64tlN0zHjWreAPE5UpqU/lLMg34n4WyoPdetTQCLHw==",
+      "path": "resend/0.2.1",
+      "hashPath": "resend.0.2.1.nupkg.sha512"
     },
     "SendGrid/9.29.3": {
       "type": "package",

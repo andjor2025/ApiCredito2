@@ -614,6 +614,22 @@
   },
   {
     "ContainingType": "GestionIntApi.Controllers.EmailValidationController",
+    "Method": "ValidarCodigoAntesdeVerificaciondeTiempo",
+    "RelativePath": "api/EmailValidation/ValidarCodigoantesdevT",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "GestionIntApi.Models.VerificationCode",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionIntApi.Controllers.EmailValidationController",
     "Method": "ValidarCodigo",
     "RelativePath": "api/EmailValidation/ValidarCodigoconBD",
     "HttpMethod": "POST",

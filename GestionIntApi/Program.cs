@@ -181,6 +181,7 @@ builder.Services.AddScoped<ITiendaService, TiendaService>();
 builder.Services.AddScoped<IRolAdminRepository, RolAdminRepository>();
 builder.Services.AddScoped<IMenuAdminRepository, MenuAdminRepository>();
 builder.Services.AddScoped<INotificacionServicio,NotificacionService>();
+builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<IReporteService, ReporteService>();
 builder.Services.AddSingleton<ICodigoVerificacionService, CodigoVerificacionService>();

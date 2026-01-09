@@ -937,6 +937,37 @@
         }
       }
     },
+    "/api/EmailValidation/ValidarCodigoantesdevT": {
+      "post": {
+        "tags": [
+          "EmailValidation"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerificationCode"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerificationCode"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerificationCode"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/EmailValidation/ValidarCodigo": {
       "post": {
         "tags": [

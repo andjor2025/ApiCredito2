@@ -4,7 +4,10 @@ using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mail;
+using System.Text;
+using System.Text.Json; 
 
 
 
@@ -15,6 +18,7 @@ namespace GestionIntApi.Repositorios.Implementacion
 
         private readonly EmailSettings _settings;
         private readonly SendGridSettings _settings1;
+        private readonly HttpClient _httpClient;
         /*public EmailService(IOptions<SendGridSettings> options)
         {
             _settings1 = options.Value
@@ -86,19 +90,24 @@ namespace GestionIntApi.Repositorios.Implementacion
         }
 
 
-        public EmailService(IOptions<SendGridSettings> options)
+        public EmailService(IOptions<SendGridSettings> options, IHttpClientFactory httpClientFactory)
         {
 
           
             _settings1 = options.Value
                 ?? throw new ArgumentNullException(nameof(options));
+
+
+            // Inicializar HttpClient
+            _httpClient = httpClientFactory.CreateClient(); // ← Agregar esta línea
+
             // Sobrescribimos ApiKey con la variable de entorno si existe
             var apiKeyFromEnv = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             if (!string.IsNullOrWhiteSpace(apiKeyFromEnv))
                 _settings1.ApiKey = apiKeyFromEnv;
         }
 
-        public async Task SendEmailAsync(string to, string subject, string body)
+        public async Task SendEmailAsyncantesdebrevo(string to, string subject, string body)
         {
             Console.WriteLine("📧 [SENDGRID] Iniciando envío de correo...");
             Console.WriteLine($"📨 [SENDGRID] Destinatario: {to}");
@@ -143,6 +152,53 @@ namespace GestionIntApi.Repositorios.Implementacion
                 var responseBody = await response.Body.ReadAsStringAsync();
                 Console.WriteLine("❌ [SENDGRID] Error al enviar correo");
                 Console.WriteLine($"📄 [SENDGRID] Response body: {responseBody}");
+            }
+        }
+
+
+        public async Task SendEmailAsync(string to, string subject, string body)
+        {
+            Console.WriteLine("📧 [BREVO] Iniciando envío de correo...");
+            Console.WriteLine($"📨 [BREVO] Destinatario: {to}");
+
+            if (string.IsNullOrWhiteSpace(_settings1.ApiKey))
+            {
+                Console.WriteLine("❌ [BREVO] ApiKey está VACÍA o NULL");
+                throw new Exception("Brevo ApiKey no configurada");
+            }
+
+            // Estructura de datos para la API de Brevo
+            var emailData = new
+            {
+                sender = new { name = _settings1.FromName, email = _settings1.FromEmail },
+                to = new[] { new { email = to } },
+                subject = subject,
+                htmlContent = body // Brevo usa htmlContent para el cuerpo
+            };
+
+            var jsonPayload = JsonSerializer.Serialize(emailData);
+            var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+            // Configuración de la petición HTTP
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.brevo.com/v3/smtp/email");
+            request.Headers.Add("api-key", _settings1.ApiKey);
+            request.Content = content;
+
+            Console.WriteLine("🚀 [BREVO] Enviando correo a la API de Brevo...");
+
+            var response = await _httpClient.SendAsync(request);
+
+            Console.WriteLine($"📡 [BREVO] StatusCode: {(int)response.StatusCode}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("✅ [BREVO] Correo enviado correctamente.");
+            }
+            else
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("❌ [BREVO] Error al enviar correo");
+                Console.WriteLine($"📄 [BREVO] Response body: {responseBody}");
             }
         }
 
