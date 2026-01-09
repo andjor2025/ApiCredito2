@@ -5,6 +5,8 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Net;
 using System.Net.Mail;
+using Resend;
+
 
 namespace GestionIntApi.Repositorios.Implementacion
 {
