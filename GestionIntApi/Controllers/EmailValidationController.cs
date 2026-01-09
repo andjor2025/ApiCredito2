@@ -210,8 +210,8 @@ namespace GestionIntApi.Controllers
               return Ok(rsp);
           }
         */
-        [HttpPost("ValidarCodigo")]
-        public async Task<IActionResult> ValidarCodigo1([FromBody] VerificationCode req)
+        [HttpPost("ValidarCodigoantesdevT")]
+        public async Task<IActionResult> ValidarCodigoAntesdeVerificaciondeTiempo([FromBody] VerificationCode req)
         {
 
             Console.WriteLine("=== 📥 PETICIÓN ValidarCodigo ===");
@@ -260,6 +260,75 @@ namespace GestionIntApi.Controllers
         }
 
 
+        [HttpPost("ValidarCodigo")]
+        public async Task<IActionResult> ValidarCodigo1([FromBody] VerificationCode req)
+        {
+            Console.WriteLine("=== 📥 PETICIÓN ValidarCodigo ===");
+            Console.WriteLine($"Correo recibido: {req.Correo}");
+            Console.WriteLine($"Código recibido: {req.Codigo}");
+
+            var rsp = new Response<UsuarioDTO>();
+
+            try
+            {
+                var registro = _registroTemporal.ObtenerRegistro(req.Correo);
+
+                if (registro == null)
+                {
+                    Console.WriteLine("❌ No existe registro temporal para este correo.");
+                    rsp.status = false;
+                    rsp.msg = "Código incorrecto o expirado.";
+                    return BadRequest(rsp);
+                }
+
+                // ✅ Verificar expiración por tiempo
+                var tiempoTranscurrido = DateTime.UtcNow - registro.Expira;
+                if (tiempoTranscurrido.TotalMinutes > 5) // Expira en 5 minutos
+                {
+                    Console.WriteLine("❌ El código ha expirado por tiempo.");
+                    _registroTemporal.EliminarRegistro(req.Correo);
+                    rsp.status = false;
+                    rsp.msg = "El código ha expirado. Solicite uno nuevo.";
+                    return BadRequest(rsp);
+                }
+
+                // Validar código
+                if (registro.Codigo != req.Codigo)
+                {
+                    Console.WriteLine("❌ El código NO coincide con el guardado.");
+                    rsp.status = false;
+                    rsp.msg = "Código incorrecto.";
+                    return BadRequest(rsp);
+                }
+
+                Console.WriteLine("✅ Código correcto, procediendo a crear usuario...");
+
+                // ✅ SOLO AQUÍ SE GUARDA EN LA BASE DE DATOS
+                var nuevoUsuario = await _UsuarioServicios.crearUsuario(registro.Usuario);
+
+                // Eliminar registro temporal SOLO si se guardó exitosamente
+                _registroTemporal.EliminarRegistro(req.Correo);
+                Console.WriteLine("🗑 Registro temporal eliminado.");
+
+                rsp.status = true;
+                rsp.value = nuevoUsuario;
+                rsp.msg = "Usuario registrado correctamente.";
+                Console.WriteLine("=== ✔ RESPUESTA Correcta ===");
+
+                return Ok(rsp);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ ERROR GENERAL: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+
+                // Si falla al guardar en BD, NO se elimina el registro temporal
+                // para que el usuario pueda reintentar
+                rsp.status = false;
+                rsp.msg = "Error al procesar la solicitud. Intente nuevamente.";
+                return StatusCode(500, rsp);
+            }
+        }
 
 
         [HttpPost("ValidarCodigoconBD")]

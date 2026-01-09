@@ -6,6 +6,7 @@ using GestionIntApi.Repositorios.Interfaces;
 using GestionIntApi.Repositorios.Interfaces.Admin;
 using GestionIntApi.Utilidades;
 using Microsoft.AspNetCore.Mvc;
+using SendGrid;
 
 namespace GestionIntApi.Controllers.Admin
 {
@@ -98,6 +99,8 @@ namespace GestionIntApi.Controllers.Admin
             return Ok(rsp);
         }
 
+
+        
 
         [HttpPost]
         [Route("GuardarASinVer")]
